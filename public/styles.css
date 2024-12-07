@@ -1,0 +1,423 @@
+/* 기본 스타일 리셋 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 본문 스타일 */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Ubuntu, sans-serif;
+    background: linear-gradient(135deg, #1e1e2f, #252539);
+    color: #e0e0e0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* 주의: 이 속성이 툴팁에 영향을 줄 수 있습니다 */
+}
+
+/* 네비게이션 바 */
+.nav-bar {
+    padding: 10px;
+    background: #2b2b3b;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+/* 아이콘 버튼 */
+.icon-btn {
+    background: transparent;
+    border: none;
+    font-size: 1.5em;
+    cursor: pointer;
+    color: #ffffff;
+    transition: color 0.3s;
+    position: relative; /* 툴팁 위치를 위한 */
+}
+
+.icon-btn:hover {
+    color: #82b1ff;
+}
+
+/* 툴팁 스타일 */
+.icon-btn::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 125%; /* 아이콘 위에 위치 */
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(26, 26, 40, 0.95);
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 4px;
+    white-space: nowrap;
+    font-size: 0.9em;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+    z-index: 1000; /* 높은 z-index 설정 */
+}
+
+.icon-btn::before {
+    content: '';
+    position: absolute;
+    bottom: 115%; /* 아이콘 위에 삼각형 */
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 5px;
+    border-style: solid;
+    border-color: rgba(26, 26, 40, 0.95) transparent transparent transparent;
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+    z-index: 1000; /* 높은 z-index 설정 */
+}
+
+.icon-btn:hover::after,
+.icon-btn:hover::before {
+    opacity: 1;
+}
+
+/* 메인 로고 */
+.centered-logo {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+}
+
+.logo-text {
+    font-size: 3em;
+    font-weight: 700;
+    color: #82b1ff;
+    margin-bottom: 10px;
+}
+
+.logo-tagline {
+    font-size: 1em;
+    color: #aaa;
+    margin-bottom: 20px;
+}
+
+/* 폼 그룹 */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+form input[type="text"] {
+    background: #3b3b50;
+    border: 1px solid #555;
+    border-radius: 4px;
+    padding: 10px;
+    color: #ffffff;
+    font-size: 0.95em;
+}
+
+form input[type="text"]:focus {
+    border-color: #6a60ff;
+    outline: none;
+}
+
+form button {
+    background: #6a60ff;
+    border: none;
+    border-radius: 4px;
+    padding: 10px;
+    font-size: 0.95em;
+    color: #ffffff;
+    cursor: pointer;
+    transition: background 0.3s;
+    margin-top: 10px;
+}
+
+form button:hover {
+    background: #7d72ff;
+}
+
+/* 기능 스위치 */
+.features-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.switch {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+}
+
+.switch input[type="checkbox"] {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    position: absolute;
+}
+
+.slider {
+    position: relative;
+    width: 46px;
+    height: 24px;
+    background-color: #555;
+    border-radius: 9999px;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+}
+
+.slider::before {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    left: 2px;
+    top: 2px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    transition: transform 0.3s;
+}
+
+.switch input[type="checkbox"]:checked + .slider {
+    background-color: #6a60ff;
+    box-shadow: 0 0 0 2px rgba(106,96,255,0.3);
+}
+
+.switch input[type="checkbox"]:checked + .slider::before {
+    transform: translateX(22px);
+}
+
+.feature-label {
+    font-size: 0.95em;
+    color: #ffffff;
+    user-select: none;
+}
+
+/* 상태 패널 */
+.status-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.status-item {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    background: #3b3b50;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+.status-label {
+    font-size: 0.85em;
+    color: #aaa;
+}
+
+/* 모달 배경 */
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right:0;
+    bottom:0;
+    background: rgba(0,0,0,0.5);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+/* 모달 창 */
+.modal {
+    background: #2f2f44;
+    border-radius:8px;
+    width: 600px;
+    height: 400px;
+    box-shadow:0 4px 10px rgba(0,0,0,0.3);
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    user-select: none;
+}
+
+.modal-header {
+    display:flex;
+    justify-content: space-between;
+    align-items:center;
+    padding:10px;
+    border-bottom:1px solid #555;
+    cursor: move;
+}
+
+.modal-header h2 {
+    font-size:1.2em;
+    color:#c0c0c0;
+}
+
+.close-btn {
+    background:none;
+    border:none;
+    font-size:1.2em;
+    color:#fff;
+    cursor:pointer;
+    transition:color 0.3s;
+}
+
+.close-btn:hover {
+    color:#ff7d7d;
+}
+
+.modal-content {
+    padding:20px;
+    flex: 1;
+    overflow:hidden;
+    position:relative;
+    display:flex;
+    flex-direction:column;
+}
+
+.modal-resize-handle {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    right: 2px;
+    bottom: 2px;
+    cursor: se-resize;
+    background: #aaa;
+    border-radius: 2px;
+}
+
+/* 터미널 */
+.terminal-container {
+    display:flex;
+    flex-direction:column;
+    flex:1;
+    overflow:hidden;
+}
+
+.terminal-output {
+    background: #1a1a28;
+    border-radius: 8px;
+    padding: 10px;
+    flex:1;
+    overflow-y: auto;
+    font-family: Consolas, 'Courier New', monospace;
+    font-size: 0.9em;
+    color: #ddd;
+    box-shadow: inset 0 0 5px rgba(0,0,0,0.5);
+    margin-bottom: 10px;
+}
+
+.terminal-input-wrap {
+    display:flex;
+}
+
+#terminalInput {
+    background: #3b3b50;
+    border: 1px solid #555;
+    border-radius: 4px;
+    padding: 10px;
+    color: #ffffff;
+    font-size: 0.95em;
+    width: 100%;
+}
+
+#terminalInput:focus {
+    border-color: #6a60ff;
+    outline: none;
+}
+
+/* 경고 모달 */
+.warning-modal {
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+}
+
+.warning-header {
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-size:1.2em;
+    color:#c0c0c0;
+    font-weight:600;
+}
+
+.warning-icon {
+    font-size:1.4em;
+}
+
+.warning-message {
+    font-size:0.95em;
+    color:#ddd;
+    line-height:1.4;
+}
+
+.button-bar,
+.warning-footer {
+    display:flex;
+    gap:10px;
+    justify-content:flex-end;
+}
+
+.button-primary {
+    background:#6a60ff;
+    border:none;
+    border-radius:4px;
+    padding:10px;
+    color:#ffffff;
+    cursor:pointer;
+    transition:background 0.3s;
+}
+
+.button-primary:hover {
+    background:#7d72ff;
+}
+
+.button-secondary {
+    background:#444;
+    border:none;
+    border-radius:4px;
+    padding:10px;
+    color:#ffffff;
+    cursor:pointer;
+    transition:background 0.3s;
+}
+
+.button-secondary:hover {
+    background:#555;
+}
+
+.confirm-buttons {
+    display:flex;
+    gap:10px;
+    margin-top:20px;
+    justify-content:flex-end;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 480px) {
+    .status-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .modal {
+        width: 90%;
+        height: 80%;
+    }
+
+    .logo-text {
+        font-size: 2.5em;
+    }
+}

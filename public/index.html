@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Exo Proxy Control Panel</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="nav-bar">
+        <button class="icon-btn" id="openFrontendModal" data-tooltip="프론트엔드 URL 등록">🌐</button>
+        <button class="icon-btn" id="openFeaturesModal" data-tooltip="기능 활성화">⚙️</button>
+        <button class="icon-btn" id="openStatusModal" data-tooltip="상태 패널">📊</button>
+        <button class="icon-btn" id="openTerminalModal" data-tooltip="터미널">💻</button>
+        <button class="icon-btn" id="powerOffBtn" data-tooltip="시스템 종료">⏻</button>
+    </header>
+    <main class="centered-logo">
+        <h1 class="logo-text">EXO PROXY</h1>
+        <p class="logo-tagline">Secure. Distributed. Encrypted.</p>
+        <p>상단 아이콘을 클릭하여 다양한 패널을 열어보세요.</p>
+    </main>
+
+    <div class="modal-backdrop" id="modalBackdrop" style="display:none;">
+        <div class="modal" id="modalWindow">
+            <div class="modal-header">
+                <h2 id="modalTitle"></h2>
+                <button class="close-btn" id="closeModalBtn">✖️</button>
+            </div>
+            <div class="modal-content" id="modalContent"></div>
+            <div class="modal-resize-handle" id="modalResizeHandle"></div>
+        </div>
+    </div>
+
+    <!-- 템플릿 -->
+    <template id="frontendTemplate">
+        <form id="frontendForm">
+            <div class="form-group">
+                <label for="frontendUrl">프론트엔드 URL:</label>
+                <input type="text" id="frontendUrl" placeholder="http://localhost:3000" required>
+            </div>
+            <button type="submit">등록</button>
+        </form>
+    </template>
+
+    <template id="featuresTemplate">
+        <div class="features-grid">
+            <label class="switch">
+                <input type="checkbox" name="ipHide">
+                <span class="slider"></span>
+                <span class="feature-label">IP 숨김</span>
+            </label>
+
+            <label class="switch">
+                <input type="checkbox" name="anonymity">
+                <span class="slider"></span>
+                <span class="feature-label">익명성 보장</span>
+            </label>
+
+            <label class="switch">
+                <input type="checkbox" name="encrypt">
+                <span class="slider"></span>
+                <span class="feature-label">경로 암호화</span>
+            </label>
+
+            <label class="switch">
+                <input type="checkbox" name="dataEncrypt">
+                <span class="slider"></span>
+                <span class="feature-label">데이터 암호화</span>
+            </label>
+
+            <label class="switch">
+                <input type="checkbox" name="fileEncrypt">
+                <span class="slider"></span>
+                <span class="feature-label">파일 암호화</span>
+            </label>
+
+            <label class="switch">
+                <input type="checkbox" name="randomDistribution">
+                <span class="slider"></span>
+                <span class="feature-label">랜덤 분산</span>
+            </label>
+        </div>
+    </template>
+
+    <template id="statusTemplate">
+        <div class="status-grid">
+            <div class="status-item">
+                <span class="status-label">API 상태:</span>
+                <span id="apiStatusValue">확인 중...</span>
+            </div>
+            <div class="status-item">
+                <span class="status-label">경로 암호화:</span>
+                <span id="encryptStatus">OFF</span>
+            </div>
+            <div class="status-item">
+                <span class="status-label">데이터 암호화:</span>
+                <span id="dataEncryptStatus">OFF</span>
+            </div>
+            <div class="status-item">
+                <span class="status-label">파일 암호화:</span>
+                <span id="fileEncryptStatus">OFF</span>
+            </div>
+            <div class="status-item">
+                <span class="status-label">랜덤/분산:</span>
+                <span id="distributionStatus">OFF</span>
+            </div>
+            <div class="status-item">
+                <span class="status-label">IP 숨김:</span>
+                <span id="ipHideStatus">OFF</span>
+            </div>
+            <div class="status-item">
+                <span class="status-label">익명성 보장:</span>
+                <span id="anonymityStatus">OFF</span>
+            </div>
+        </div>
+    </template>
+
+    <template id="terminalTemplate">
+        <div class="terminal-container">
+            <div class="terminal-output" id="terminalOutput"></div>
+            <div class="terminal-input-wrap">
+                <input type="text" id="terminalInput" placeholder="명령어를 입력하세요 (예: api list, poweroff)" autocomplete="off">
+            </div>
+        </div>
+    </template>
+
+    <template id="confirmPoweroffTemplate">
+        <div class="warning-modal">
+            <div class="warning-header">
+                <span class="warning-icon">🛑</span>
+                <span class="warning-title">시스템 종료</span>
+            </div>
+            <div class="warning-content">
+                <p class="warning-message">프록시 서버를 종료하시겠습니까?</p>
+            </div>
+            <div class="warning-footer">
+                <button id="confirmYesBtn" class="button-primary">예</button>
+                <button id="confirmNoBtn" class="button-secondary">아니요</button>
+            </div>
+        </div>
+    </template>
+
+    <template id="encryptWarnTemplate">
+        <div class="warning-modal">
+            <div class="warning-header">
+                <span class="warning-icon">⚠️</span>
+                <span class="warning-title">경고</span>
+            </div>
+            <div class="warning-content">
+                <p class="warning-message">
+                    실제 서비스 중인 사이트에 적용 시 복호화 불가.<br>
+                    개발환경에서 테스트하는 것이 적합합니다.<br><br>
+                    경로 암호화를 활성화하시겠습니까?
+                </p>
+            </div>
+            <div class="warning-footer">
+                <button id="encryptYesBtn" class="button-primary">예</button>
+                <button id="encryptNoBtn" class="button-secondary">아니요</button>
+            </div>
+        </div>
+    </template>
+
+    <script src="script.js"></script>
+</body>
+</html>
