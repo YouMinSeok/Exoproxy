@@ -2,40 +2,52 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>Exo Proxy Control Panel</title>
+    <title>ExoProxy Dashboard</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header class="nav-bar">
-        <button class="icon-btn" id="openFrontendModal" data-tooltip="프론트엔드 URL 등록">🌐</button>
-        <button class="icon-btn" id="openFeaturesModal" data-tooltip="기능 활성화">⚙️</button>
-        <button class="icon-btn" id="openStatusModal" data-tooltip="상태 패널">📊</button>
-        <button class="icon-btn" id="openTerminalModal" data-tooltip="터미널">💻</button>
-        <button class="icon-btn" id="powerOffBtn" data-tooltip="시스템 종료">⏻</button>
-    </header>
-    <main class="centered-logo">
-        <h1 class="logo-text">EXO PROXY</h1>
-        <p class="logo-tagline">Secure. Distributed. Encrypted.</p>
-        <p>상단 아이콘을 클릭하여 다양한 패널을 열어보세요.</p>
-    </main>
+    <!-- 네비게이션 바 -->
+    <div class="nav-bar">
+        <button id="openFrontendModal" class="icon-btn" data-tooltip="프론트엔드 URL 등록">🏠</button>
+        <button id="openFeaturesModal" class="icon-btn" data-tooltip="기능 활성화">⚙️</button>
+        <button id="openStatusModal" class="icon-btn" data-tooltip="상태 패널">📊</button>
+        <button id="openTerminalModal" class="icon-btn" data-tooltip="터미널">💻</button>
+        <button id="forwardProxyIcon" class="icon-btn" data-tooltip="포워드 프록시 활성화">➡️</button>
+        <button id="powerOffBtn" class="icon-btn" data-tooltip="시스템 종료">🔌</button>
+    </div>
 
-    <div class="modal-backdrop" id="modalBackdrop" style="display:none;">
-        <div class="modal" id="modalWindow">
-            <div class="modal-header">
-                <h2 id="modalTitle"></h2>
-                <button class="close-btn" id="closeModalBtn">✖️</button>
-            </div>
-            <div class="modal-content" id="modalContent"></div>
-            <div class="modal-resize-handle" id="modalResizeHandle"></div>
+    <div class="centered-logo">
+        <div class="logo-text">EXO PROXY</div>
+        <div class="logo-tagline">Your Secure and Anonymous Proxy</div>
+        <!-- 프록시 연결 상태 표시 -->
+        <div id="proxyStatusMessage" class="proxy-status-message" style="display: none;">
+            프록시 서버에 연결되었습니다. 연결 시간: <span id="connectionTime">00:00:00</span>
         </div>
     </div>
 
-    <!-- 템플릿 -->
+    <!-- 포워드 모드 시 표시할 연결 해제 버튼 -->
+    <div id="disconnectContainer" style="display: none; text-align:center; margin-bottom:20px;">
+        <button id="disconnectButton" class="button-primary">연결 해제</button>
+    </div>
+
+    <!-- 모달 백드롭 -->
+    <div id="modalBackdrop" class="modal-backdrop">
+        <div id="modalWindow" class="modal">
+            <div class="modal-header">
+                <h2 id="modalTitle"></h2>
+                <button id="closeModalBtn" class="close-btn">&times;</button>
+            </div>
+            <div id="modalContent" class="modal-content"></div>
+            <div id="modalResizeHandle" class="modal-resize-handle"></div>
+        </div>
+    </div>
+
+    <!-- 모달 템플릿들 -->
     <template id="frontendTemplate">
         <form id="frontendForm">
             <div class="form-group">
-                <label for="frontendUrl">프론트엔드 URL:</label>
-                <input type="text" id="frontendUrl" placeholder="http://localhost:3000" required>
+                <label for="frontendUrl">URL:</label>
+                <input type="text" id="frontendUrl" name="frontendUrl" required>
             </div>
             <button type="submit">등록</button>
         </form>
@@ -43,49 +55,44 @@
 
     <template id="featuresTemplate">
         <div class="features-grid">
-            <label class="switch">
-                <input type="checkbox" name="ipHide">
-                <span class="slider"></span>
+            <div class="switch">
+                <input type="checkbox" id="ipHide" name="ipHide">
+                <label class="slider" for="ipHide"></label>
                 <span class="feature-label">IP 숨김</span>
-            </label>
-
-            <label class="switch">
-                <input type="checkbox" name="anonymity">
-                <span class="slider"></span>
+            </div>
+            <div class="switch">
+                <input type="checkbox" id="anonymity" name="anonymity">
+                <label class="slider" for="anonymity"></label>
                 <span class="feature-label">익명성 보장</span>
-            </label>
-
-            <label class="switch">
-                <input type="checkbox" name="encrypt">
-                <span class="slider"></span>
+            </div>
+            <div class="switch">
+                <input type="checkbox" id="encrypt" name="encrypt">
+                <label class="slider" for="encrypt"></label>
                 <span class="feature-label">경로 암호화</span>
-            </label>
-
-            <label class="switch">
-                <input type="checkbox" name="dataEncrypt">
-                <span class="slider"></span>
+            </div>
+            <div class="switch">
+                <input type="checkbox" id="dataEncrypt" name="dataEncrypt">
+                <label class="slider" for="dataEncrypt"></label>
                 <span class="feature-label">데이터 암호화</span>
-            </label>
-
-            <label class="switch">
-                <input type="checkbox" name="fileEncrypt">
-                <span class="slider"></span>
+            </div>
+            <div class="switch">
+                <input type="checkbox" id="fileEncrypt" name="fileEncrypt">
+                <label class="slider" for="fileEncrypt"></label>
                 <span class="feature-label">파일 암호화</span>
-            </label>
-
-            <label class="switch">
-                <input type="checkbox" name="randomDistribution">
-                <span class="slider"></span>
+            </div>
+            <div class="switch">
+                <input type="checkbox" id="randomDistribution" name="randomDistribution">
+                <label class="slider" for="randomDistribution"></label>
                 <span class="feature-label">랜덤 분산</span>
-            </label>
+            </div>
         </div>
     </template>
 
     <template id="statusTemplate">
         <div class="status-grid">
             <div class="status-item">
-                <span class="status-label">API 상태:</span>
-                <span id="apiStatusValue">확인 중...</span>
+                <span class="status-label">운영 모드:</span>
+                <span id="apiStatusValue">OFF</span>
             </div>
             <div class="status-item">
                 <span class="status-label">경로 암호화:</span>
@@ -100,12 +107,8 @@
                 <span id="fileEncryptStatus">OFF</span>
             </div>
             <div class="status-item">
-                <span class="status-label">랜덤/분산:</span>
+                <span class="status-label">랜덤 분산:</span>
                 <span id="distributionStatus">OFF</span>
-            </div>
-            <div class="status-item">
-                <span class="status-label">IP 숨김:</span>
-                <span id="ipHideStatus">OFF</span>
             </div>
             <div class="status-item">
                 <span class="status-label">익명성 보장:</span>
@@ -116,26 +119,18 @@
 
     <template id="terminalTemplate">
         <div class="terminal-container">
-            <div class="terminal-output" id="terminalOutput"></div>
+            <div id="terminalOutput" class="terminal-output"></div>
             <div class="terminal-input-wrap">
-                <input type="text" id="terminalInput" placeholder="명령어를 입력하세요 (예: api list, poweroff)" autocomplete="off">
+                <input type="text" id="terminalInput" placeholder="명령어를 입력하세요...">
             </div>
         </div>
     </template>
 
     <template id="confirmPoweroffTemplate">
-        <div class="warning-modal">
-            <div class="warning-header">
-                <span class="warning-icon">🛑</span>
-                <span class="warning-title">시스템 종료</span>
-            </div>
-            <div class="warning-content">
-                <p class="warning-message">프록시 서버를 종료하시겠습니까?</p>
-            </div>
-            <div class="warning-footer">
-                <button id="confirmYesBtn" class="button-primary">예</button>
-                <button id="confirmNoBtn" class="button-secondary">아니요</button>
-            </div>
+        <h3>시스템 종료</h3>
+        <div class="confirm-buttons">
+            <button id="confirmYesBtn" class="button-primary">예</button>
+            <button id="confirmNoBtn" class="button-secondary">아니오</button>
         </div>
     </template>
 
@@ -143,18 +138,36 @@
         <div class="warning-modal">
             <div class="warning-header">
                 <span class="warning-icon">⚠️</span>
-                <span class="warning-title">경고</span>
+                <span>경고</span>
             </div>
-            <div class="warning-content">
-                <p class="warning-message">
-                    실제 서비스 중인 사이트에 적용 시 복호화 불가.<br>
-                    개발환경에서 테스트하는 것이 적합합니다.<br><br>
-                    경로 암호화를 활성화하시겠습니까?
-                </p>
+            <div class="warning-message">
+                경로 암호화를 활성화하면 모든 요청이 암호화됩니다. 계속하시겠습니까?
             </div>
-            <div class="warning-footer">
+            <div class="confirm-buttons">
                 <button id="encryptYesBtn" class="button-primary">예</button>
-                <button id="encryptNoBtn" class="button-secondary">아니요</button>
+                <button id="encryptNoBtn" class="button-secondary">아니오</button>
+            </div>
+        </div>
+    </template>
+
+    <!-- Forward Proxy 모달 템플릿 -->
+    <template id="forwardProxyModalTemplate">
+        <div class="warning-modal">
+            <div class="warning-header">
+                <span class="warning-icon">⚠️</span>
+                포워드 프록시 서버 실행
+            </div>
+            <div class="warning-message">
+                프록시 서버가 귀하의 컴퓨터에서 모든 네트워크 트래픽을 라우팅하려고 합니다.
+                계속하시겠습니까?
+                <ul>
+                    <li>포워드 모드: 별도의 URL 등록 없이 모든 트래픽 처리</li>
+                    <li>리버스 모드: 등록된 URL만 처리</li>
+                </ul>
+            </div>
+            <div class="confirm-buttons">
+                <button id="forwardAllowBtn" class="button-primary">허용</button>
+                <button id="forwardCancelBtn" class="button-secondary">취소</button>
             </div>
         </div>
     </template>

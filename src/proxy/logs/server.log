@@ -1,0 +1,144 @@
+2024-12-08T04:18:38.072Z [INFO]: Exo Proxy HTTPS server running on port 5000
+2024-12-08T04:19:11.808Z [INFO]: Received GET request for /status
+2024-12-08T04:19:45.271Z [INFO]: Received POST request for /set-mode
+2024-12-08T04:19:45.278Z [INFO]: 운영 모드가 forward으로 변경되었습니다.
+2024-12-08T04:19:52.431Z [INFO]: Received POST request for /set-mode
+2024-12-08T04:19:52.434Z [INFO]: 운영 모드가 reverse으로 변경되었습니다.
+2024-12-08T04:22:11.328Z [INFO]: Received POST request for /register
+2024-12-08T04:22:11.333Z [INFO]: 프론트엔드 URL이 등록되었습니다: http://localhost:3000
+2024-12-08T04:22:20.430Z [INFO]: Received POST request for /poweroff
+2024-12-08T04:22:31.650Z [INFO]: Received GET request for /status
+2024-12-08T04:23:32.268Z [INFO]: Received POST request for /command
+2024-12-08T04:23:39.297Z [INFO]: Received POST request for /command
+2024-12-08T04:24:51.805Z [INFO]: Received GET request for /features
+2024-12-08T04:24:51.810Z [INFO]: Received GET request for /features
+2024-12-08T04:24:58.285Z [INFO]: Received POST request for /command
+2024-12-08T04:25:54.140Z [INFO]: Received POST request for /set-mode
+2024-12-08T04:25:54.143Z [INFO]: 운영 모드가 forward으로 변경되었습니다.
+2024-12-08T04:25:57.784Z [INFO]: Received GET request for /features
+2024-12-08T04:25:57.790Z [INFO]: Received GET request for /features
+2024-12-08T04:32:15.170Z [INFO]: Exo Proxy HTTPS server running on port 5000
+2024-12-08T04:32:27.211Z [INFO]: Received GET request for /status
+2024-12-08T04:32:28.875Z [INFO]: Received POST request for /set-mode
+2024-12-08T04:32:28.880Z [INFO]: 운영 모드가 reverse으로 변경되었습니다.
+2024-12-08T04:32:44.620Z [INFO]: Received POST request for /poweroff
+2024-12-08T04:32:57.642Z [INFO]: Received GET request for /status
+2024-12-08T04:33:02.562Z [INFO]: Received POST request for /command
+2024-12-08T04:33:07.382Z [INFO]: Received POST request for /command
+2024-12-08T04:33:15.534Z [INFO]: Received POST request for /command
+2024-12-08T04:33:22.986Z [INFO]: Received POST request for /set-mode
+2024-12-08T04:33:22.988Z [INFO]: 운영 모드가 forward으로 변경되었습니다.
+2024-12-08T04:34:16.983Z [INFO]: Received POST request for /command
+2024-12-08T04:34:20.126Z [INFO]: Received GET request for /features
+2024-12-08T04:34:20.129Z [INFO]: Received GET request for /features
+2024-12-08T04:34:26.949Z [INFO]: Received POST request for /set-mode
+2024-12-08T04:34:26.951Z [INFO]: 운영 모드가 forward으로 변경되었습니다.
+2024-12-08T04:37:30.213Z [INFO]: Received POST request for /set-mode
+2024-12-08T04:37:30.215Z [INFO]: 운영 모드가 reverse으로 변경되었습니다.
+2024-12-08T04:37:38.517Z [INFO]: Received GET request for /status
+2024-12-08T04:37:38.525Z [INFO]: Received GET request for /features
+2024-12-08T04:37:42.571Z [INFO]: Received GET request for /status
+2024-12-08T04:37:42.578Z [INFO]: Received GET request for /features
+2024-12-08T04:37:51.175Z [INFO]: Received POST request for /set-mode
+2024-12-08T04:37:51.177Z [INFO]: 운영 모드가 forward으로 변경되었습니다.
+2024-12-08T04:37:55.374Z [INFO]: Received GET request for /status
+2024-12-08T04:37:55.381Z [INFO]: Received GET request for /features
+2024-12-08T04:37:57.569Z [INFO]: Received GET request for /status
+2024-12-08T04:37:57.575Z [INFO]: Received GET request for /features
+2024-12-08T04:38:02.569Z [INFO]: Received GET request for /status
+2024-12-08T04:38:02.576Z [INFO]: Received GET request for /features
+2024-12-08T04:38:07.574Z [INFO]: Received GET request for /status
+2024-12-08T04:38:07.580Z [INFO]: Received GET request for /features
+2024-12-08T04:38:09.998Z [INFO]: Received POST request for /set-mode
+2024-12-08T04:38:10.001Z [INFO]: 운영 모드가 reverse으로 변경되었습니다.
+2024-12-08T04:41:59.362Z [INFO]: Exo Proxy HTTPS server running on port 5000
+2024-12-08T04:42:10.847Z [INFO]: Received GET request for /status
+2024-12-08T04:42:25.679Z [INFO]: Received POST request for /command
+2024-12-08T04:42:37.467Z [INFO]: Received GET request for /features
+2024-12-08T04:42:37.474Z [INFO]: Received GET request for /features
+2024-12-08T04:42:39.876Z [INFO]: Received POST request for /toggle-feature
+2024-12-08T04:42:39.878Z [INFO]: ipHide 기능이 활성화되었습니다.
+2024-12-08T04:42:41.288Z [INFO]: Received GET request for /features
+2024-12-08T04:42:41.292Z [INFO]: Received GET request for /features
+2024-12-08T04:42:41.296Z [INFO]: Received GET request for /features
+2024-12-08T04:42:42.203Z [INFO]: Received POST request for /toggle-feature
+2024-12-08T04:42:42.206Z [INFO]: anonymity 기능이 활성화되었습니다.
+2024-12-08T04:42:43.536Z [INFO]: Received GET request for /features
+2024-12-08T04:42:43.542Z [INFO]: Received GET request for /features
+2024-12-08T04:42:43.548Z [INFO]: Received GET request for /features
+2024-12-08T04:43:14.536Z [INFO]: Received POST request for /register
+2024-12-08T04:43:14.540Z [INFO]: 프론트엔드 URL이 등록되었습니다: http://localhost:3000/
+2024-12-08T04:43:56.061Z [INFO]: Received POST request for /command
+2024-12-08T04:45:10.405Z [INFO]: Received GET request for /features
+2024-12-08T04:45:10.415Z [INFO]: Received GET request for /features
+2024-12-08T04:49:17.742Z [INFO]: Received POST request for /set-mode
+2024-12-08T04:49:17.746Z [INFO]: 운영 모드가 forward으로 변경되었습니다.
+2024-12-08T04:53:30.385Z [INFO]: Exo Proxy HTTPS server running on port 5000
+2024-12-08T04:53:49.693Z [INFO]: Received POST request for /set-mode
+2024-12-08T04:53:49.698Z [INFO]: 운영 모드가 reverse으로 변경되었습니다.
+2024-12-08T04:53:52.763Z [INFO]: Received POST request for /poweroff
+2024-12-08T04:54:01.610Z [INFO]: Received GET request for /status
+2024-12-08T04:54:09.505Z [INFO]: Received POST request for /set-mode
+2024-12-08T04:54:09.509Z [INFO]: 운영 모드가 forward으로 변경되었습니다.
+2024-12-08T04:54:56.965Z [INFO]: Received POST request for /set-mode
+2024-12-08T04:54:56.967Z [INFO]: 운영 모드가 reverse으로 변경되었습니다.
+2024-12-08T04:55:01.590Z [INFO]: Received GET request for /status
+2024-12-08T04:55:01.599Z [INFO]: Received GET request for /features
+2024-12-08T04:55:06.530Z [INFO]: Received GET request for /status
+2024-12-08T04:55:06.534Z [INFO]: Received GET request for /features
+2024-12-08T04:55:29.415Z [INFO]: Received POST request for /poweroff
+2024-12-08T04:55:39.028Z [INFO]: Received GET request for /status
+2024-12-08T04:56:03.721Z [INFO]: Received POST request for /register
+2024-12-08T04:56:03.725Z [INFO]: 프론트엔드 URL이 등록되었습니다: http://localhost:3000/
+2024-12-08T05:04:40.802Z [INFO]: Received GET request for /
+2024-12-08T05:04:40.805Z [INFO]: 리버스 프록시 요청을 다음으로 라우팅 중: http://localhost:3000/
+2024-12-08T05:04:41.027Z [INFO]: Received GET request for /favicon.ico
+2024-12-08T05:04:41.028Z [INFO]: 리버스 프록시 요청을 다음으로 라우팅 중: http://localhost:3000/
+2024-12-08T05:07:07.108Z [INFO]: Received GET request for /
+2024-12-08T05:07:07.109Z [INFO]: 리버스 프록시 요청을 다음으로 라우팅 중: http://localhost:3000/
+2024-12-08T05:07:12.779Z [INFO]: Received GET request for /
+2024-12-08T05:07:12.780Z [INFO]: 리버스 프록시 요청을 다음으로 라우팅 중: http://localhost:3000/
+2024-12-08T05:09:29.354Z [INFO]: Received POST request for /set-mode
+2024-12-08T05:09:29.358Z [INFO]: 운영 모드가 forward으로 변경되었습니다.
+2024-12-08T05:11:20.055Z [INFO]: Exo Proxy HTTPS server running on port 5000
+2024-12-08T05:11:32.732Z [INFO]: Received GET request for /status
+2024-12-08T05:11:35.958Z [INFO]: Received POST request for /set-mode
+2024-12-08T05:11:35.962Z [INFO]: 운영 모드가 reverse으로 변경되었습니다.
+2024-12-08T05:11:39.644Z [INFO]: Received POST request for /set-mode
+2024-12-08T05:11:39.648Z [INFO]: 운영 모드가 forward으로 변경되었습니다.
+2024-12-08T05:13:06.534Z [INFO]: Received GET request for /
+2024-12-08T05:13:06.535Z [INFO]: [FORWARD] 요청 -> http://localhost:5000/
+2024-12-08T05:13:29.571Z [INFO]: Exo Proxy HTTPS server running on port 5000
+2024-12-08T05:13:35.515Z [INFO]: Received GET request for /
+2024-12-08T05:13:35.516Z [INFO]: [FORWARD] 요청 -> http://localhost:5000/
+2024-12-08T05:13:43.521Z [INFO]: Exo Proxy HTTPS server running on port 5000
+2024-12-08T05:13:45.631Z [INFO]: Received POST request for /set-mode
+2024-12-08T05:13:45.633Z [INFO]: 운영 모드가 reverse으로 변경되었습니다.
+2024-12-08T05:13:47.430Z [INFO]: Received GET request for /
+2024-12-08T05:13:47.521Z [INFO]: Received GET request for /favicon.ico
+2024-12-08T05:13:59.195Z [INFO]: Received GET request for /
+2024-12-08T05:13:59.265Z [INFO]: Received GET request for /favicon.ico
+2024-12-08T05:13:59.723Z [INFO]: Received GET request for /
+2024-12-08T05:13:59.796Z [INFO]: Received GET request for /favicon.ico
+2024-12-08T05:13:59.900Z [INFO]: Received GET request for /
+2024-12-08T05:13:59.981Z [INFO]: Received GET request for /favicon.ico
+2024-12-08T05:14:05.430Z [INFO]: Received GET request for /
+2024-12-08T05:14:05.475Z [INFO]: Received GET request for /favicon.ico
+2024-12-08T05:14:05.555Z [INFO]: Received GET request for /
+2024-12-08T05:14:05.611Z [INFO]: Received GET request for /favicon.ico
+2024-12-08T05:14:05.724Z [INFO]: Received GET request for /
+2024-12-08T05:14:05.781Z [INFO]: Received GET request for /favicon.ico
+2024-12-08T05:14:25.296Z [INFO]: Received GET request for /
+2024-12-08T05:14:25.489Z [INFO]: Received GET request for /favicon.ico
+2024-12-08T05:17:43.687Z [INFO]: Received POST request for /set-mode
+2024-12-08T05:17:43.691Z [INFO]: 운영 모드가 forward으로 변경되었습니다.
+2024-12-08T05:17:48.541Z [INFO]: Received POST request for /set-mode
+2024-12-08T05:17:48.544Z [INFO]: 운영 모드가 reverse으로 변경되었습니다.
+2024-12-08T05:20:13.163Z [INFO]: Exo Proxy HTTPS server running on port 5000
+2024-12-08T05:20:17.391Z [INFO]: Received POST request for /poweroff
+2024-12-08T05:20:29.703Z [INFO]: Received GET request for /status
+2024-12-08T05:20:34.130Z [INFO]: Received POST request for /set-mode
+2024-12-08T05:20:34.135Z [INFO]: 운영 모드가 forward으로 변경되었습니다.
+2024-12-08T05:26:03.591Z [INFO]: Received GET request for /features
+2024-12-08T05:26:03.597Z [INFO]: Received GET request for /features
+2024-12-08T05:28:15.031Z [INFO]: Received GET request for /proxy.pac

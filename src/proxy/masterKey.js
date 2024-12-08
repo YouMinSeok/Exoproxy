@@ -1,13 +1,22 @@
+// src/proxy/masterKey.js
 const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
 
 let electronApp; // Electron의 app 객체를 저장할 변수
 
+/**
+ * Electron app 초기화 함수
+ * @param {Object} masterApp - Electron의 app 객체
+ */
 function init(masterApp) {
     electronApp = masterApp;
 }
 
+/**
+ * 마스터 키 파일 경로 반환 함수
+ * @returns {string} - 마스터 키 파일 경로
+ */
 function keyPath() {
     if (!electronApp) {
         throw new Error('Electron app is not initialized in masterKey module');
@@ -15,6 +24,9 @@ function keyPath() {
     return path.join(electronApp.getPath('userData'), 'masterKey.json');
 }
 
+/**
+ * 마스터 키 생성 함수
+ */
 function generateMasterKey() {
     if (fs.existsSync(keyPath())) {
         console.log('마스터키가 이미 생성되었습니다.');
@@ -29,6 +41,10 @@ function generateMasterKey() {
     console.log(`마스터키: ${masterKey}`);
 }
 
+/**
+ * 마스터 키 로드 함수
+ * @returns {string|null} - 마스터 키 또는 null
+ */
 function loadMasterKey() {
     if (fs.existsSync(keyPath())) {
         const keyData = JSON.parse(fs.readFileSync(keyPath()));

@@ -1,106 +1,101 @@
+<!-- public/splash.html -->
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8">
-<title>EXO PROXY Splash</title>
-<style>
-body {
-    margin: 0; padding: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, Cantarell, sans-serif;
-    background: linear-gradient(135deg, #0d0d17, #1e1e2f, #252539);
-    background-size: 400% 400%;
-    color: #e0e0e0;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    position: relative;
-}
+    <meta charset="UTF-8">
+    <title>EXO PROXY Splash</title>
+    <style>
+        body {
+            margin: 0; padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #0d0d17, #1e1e2f, #252539);
+            background-size: 400% 400%;
+            color: #e0e0e0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+            animation: bgMove 20s infinite alternate;
+        }
 
-/* 희미한 별(입자) 효과를 위한 pseudo-element */
-body::before {
-    content: "";
-    position: absolute;
-    top:0; left:0; right:0; bottom:0;
-    pointer-events: none;
-    background: transparent;
-    z-index: 1;
-    animation: starFlicker 5s infinite;
-}
+        /* 희미한 별(입자) 효과를 위한 pseudo-element */
+        body::before {
+            content: "";
+            position: absolute;
+            top:0; left:0; right:0; bottom:0;
+            pointer-events: none;
+            background: transparent;
+            z-index: 1;
+            animation: starFlicker 5s infinite;
+        }
 
-/* starFlicker: 미세한 밝기 변화로 별 깜빡이는 느낌 */
-@keyframes starFlicker {
-    0%,100% { background-image: radial-gradient(circle at 20% 20%, rgba(255,255,255,0.05) 1px, transparent 1px); }
-    50% { background-image: radial-gradient(circle at 20% 20%, rgba(255,255,255,0.07) 1px, transparent 1px); }
-    /* 필요하다면 더 많은 별무늬 패턴을 추가 가능 */
-}
+        /* starFlicker: 미세한 밝기 변화로 별 깜빡이는 느낌 */
+        @keyframes starFlicker {
+            0%,100% { background-image: radial-gradient(circle at 20% 20%, rgba(255,255,255,0.05) 1px, transparent 1px); }
+            50% { background-image: radial-gradient(circle at 20% 20%, rgba(255,255,255,0.07) 1px, transparent 1px); }
+        }
 
-/* 로고 텍스트 */
-.logo-text {
-    font-size: 4em;
-    font-weight: 700;
-    margin-bottom: 20px;
-    position: relative;
-    color: transparent;
-    background: linear-gradient(45deg, #4f5f8f, #82b1ff, #4f5f8f);
-    background-size: 200% 200%;
-    background-clip: text;
-    -webkit-background-clip: text;
-    animation: shimmer 4s infinite, breathing 6s infinite;
-    text-shadow: none;
-}
+        /* 로고 텍스트 */
+        .logo-text {
+            font-size: 4em;
+            font-weight: 700;
+            margin-bottom: 20px;
+            position: relative;
+            color: transparent;
+            background: linear-gradient(45deg, #4f5f8f, #82b1ff, #4f5f8f);
+            background-size: 200% 200%;
+            background-clip: text;
+            -webkit-background-clip: text;
+            animation: shimmer 4s infinite, breathing 6s infinite;
+            text-shadow: none;
+        }
 
-/* Shimmer 애니메이션 */
-@keyframes shimmer {
-    0% { background-position: -200% 0; }
-    100% { background-position: 200% 0; }
-}
+        /* Shimmer 애니메이션 */
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
 
-/* Breathing (맥동) 애니메이션: 로고가 살짝 커졌다 작아짐 */
-@keyframes breathing {
-    0%, 100% { transform: scale(1.0); }
-    50% { transform: scale(0.98); }
-}
+        /* Breathing (맥동) 애니메이션: 로고가 살짝 커졌다 작아짐 */
+        @keyframes breathing {
+            0%, 100% { transform: scale(1.0); }
+            50% { transform: scale(0.98); }
+        }
 
-/* 타이핑 애니메이션을 위한 컨테이너 */
-.sub-text {
-    font-size: 1.2em;
-    color: #a0a0a0;
-    display: inline-block;
-    position: relative;
-    overflow: hidden;
-    border-right: 2px solid #82b1ff; 
-    width: 12ch; /* "Initializing..." 길이에 맞게 */
-    white-space: nowrap;
-    animation: typing 3s steps(12, end), blinkCursor 1s step-end infinite alternate 3s;
-    z-index: 2;
-}
+        /* 타이핑 애니메이션을 위한 컨테이너 */
+        .sub-text {
+            font-size: 1.2em;
+            color: #a0a0a0;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+            border-right: 2px solid #82b1ff; 
+            width: 12ch; /* "Initializing..." 길이에 맞게 */
+            white-space: nowrap;
+            animation: typing 3s steps(12, end), blinkCursor 1s step-end infinite alternate 3s;
+            z-index: 2;
+        }
 
-@keyframes typing {
-    from { width: 0; }
-    to { width: 12ch; }
-}
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 12ch; }
+        }
 
-@keyframes blinkCursor {
-    0% { border-color: #82b1ff; }
-    50% { border-color: transparent; }
-    100% { border-color: #82b1ff; }
-}
+        @keyframes blinkCursor {
+            0% { border-color: #82b1ff; }
+            50% { border-color: transparent; }
+            100% { border-color: #82b1ff; }
+        }
 
-/* 배경 애니메이션(선택) */
-/* 필요 없다면 삭제 가능. 뒷배경을 서서히 움직여 깊은 느낌 */
-body {
-    animation: bgMove 20s infinite alternate;
-}
-
-@keyframes bgMove {
-    0% { background-position:0% 0%; }
-    100% { background-position:100% 100%; }
-}
-
-</style>
+        /* 배경 애니메이션(선택) */
+        @keyframes bgMove {
+            0% { background-position:0% 0%; }
+            100% { background-position:100% 100%; }
+        }
+    </style>
 </head>
 <body>
     <div class="logo-text">EXO PROXY</div>

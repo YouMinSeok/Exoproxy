@@ -1,3 +1,4 @@
+// src/proxy/ip_hide.js
 function hideClientIP(req) {
     req.headers['X-Forwarded-For'] = null;
     req.headers['Via'] = null;

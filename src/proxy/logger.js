@@ -1,17 +1,24 @@
-const winston = require('winston');
+// proxy/logger.js
+
+const { createLogger, format, transports } = require('winston');
 const path = require('path');
 
-const logger = winston.createLogger({
+// 로그 디렉토리 생성 (없을 경우)
+const fs = require('fs');
+const logDir = path.join(__dirname, 'logs');
+if (!fs.existsSync(logDir)) {
+    fs.mkdirSync(logDir);
+}
+
+const logger = createLogger({
     level: 'info',
-    format: winston.format.combine(
-        winston.format.timestamp(),
-        winston.format.printf(({ timestamp, level, message }) => {
-            return `[${timestamp}] ${level}: ${message}`;
-        })
+    format: format.combine(
+        format.timestamp(),
+        format.printf(({ timestamp, level, message }) => `${timestamp} [${level.toUpperCase()}]: ${message}`)
     ),
     transports: [
-        new winston.transports.Console(),
-        new winston.transports.File({ filename: path.join(__dirname, 'exoproxy.log') }), // 로그 파일 추가
+        new transports.Console(),
+        new transports.File({ filename: path.join(logDir, 'server.log') })
     ],
 });
 

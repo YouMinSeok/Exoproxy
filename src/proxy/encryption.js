@@ -1,39 +1,37 @@
-const crypto = require('crypto');
-const masterKeyModule = require('./masterKey');
+// src/proxy/encryption.js
 
+const crypto = require('crypto');
+const fs = require('fs');
+const path = require('path');
+
+// 마스터 키 로드 또는 생성
 let masterKey;
+const masterKeyPath = path.join(__dirname, 'masterKey.json');
 
 function initEncryption() {
-    const masterKeyHex = masterKeyModule.loadMasterKey();
-    if (!masterKeyHex) {
-        throw new Error('마스터키를 로드할 수 없습니다.');
+    if (fs.existsSync(masterKeyPath)) {
+        const data = fs.readFileSync(masterKeyPath);
+        const parsed = JSON.parse(data);
+        masterKey = Buffer.from(parsed.key, 'hex');
+        console.log('Encryption key loaded.');
+    } else {
+        masterKey = crypto.randomBytes(32); // 256비트 키
+        fs.writeFileSync(masterKeyPath, JSON.stringify({ key: masterKey.toString('hex') }, null, 2));
+        console.log('Encryption key generated and saved.');
     }
-    masterKey = Buffer.from(masterKeyHex, 'hex');
 }
-
-const algorithm = 'aes-256-cbc';
 
 function encrypt(text) {
-    if (!masterKey) {
-        throw new Error('Encryption module not initialized');
-    }
-    const iv = crypto.randomBytes(16);
-    const cipher = crypto.createCipheriv(algorithm, masterKey, iv);
+    const iv = crypto.randomBytes(16); // 128비트 IV
+    const cipher = crypto.createCipheriv('aes-256-cbc', masterKey, iv);
     let encrypted = cipher.update(text, 'utf8', 'hex');
     encrypted += cipher.final('hex');
-    return {
-        iv: iv.toString('hex'),
-        content: encrypted,
-    };
+    return { content: encrypted, iv: iv.toString('hex') };
 }
 
-function decrypt(encryptedData) {
-    if (!masterKey) {
-        throw new Error('Encryption module not initialized');
-    }
-    const iv = Buffer.from(encryptedData.iv, 'hex');
-    const decipher = crypto.createDecipheriv(algorithm, masterKey, iv);
-    let decrypted = decipher.update(encryptedData.content, 'hex', 'utf8');
+function decrypt({ content, iv }) {
+    const decipher = crypto.createDecipheriv('aes-256-cbc', masterKey, Buffer.from(iv, 'hex'));
+    let decrypted = decipher.update(content, 'hex', 'utf8');
     decrypted += decipher.final('utf8');
     return decrypted;
 }
@@ -41,5 +39,5 @@ function decrypt(encryptedData) {
 module.exports = {
     initEncryption,
     encrypt,
-    decrypt,
+    decrypt
 };
