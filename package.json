@@ -18,6 +18,7 @@
     "dotenv": "^16.4.7",
     "electron-updater": "^6.3.9",
     "express": "^4.21.2",
+    "html2canvas": "^1.4.1",
     "http-proxy": "^1.18.1",
     "http-proxy-middleware": "^3.0.3",
     "is-dev": "^0.1.4",

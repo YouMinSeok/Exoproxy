@@ -1,4 +1,4 @@
-/* public/styles.css */
+/* styles.css */
 
 /* 기본 스타일 리셋 */
 * {
@@ -10,76 +10,115 @@
 /* 본문 스타일 */
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Ubuntu, sans-serif;
-    background: linear-gradient(135deg, #1e1e2f, #252539);
-    color: #e0e0e0;
+    background: linear-gradient(135deg, #2c3e50, #34495e); /* 리눅스/우분투 스타일의 어두운 그라데이션 */
+    color: #ecf0f1;
     min-height: 100vh;
     display: flex;
-    flex-direction: column;
-    overflow: hidden; /* 주의: 이 속성이 툴팁에 영향을 줄 수 있습니다 */
+    overflow: hidden; /* 툴팁에 영향 줄 수 있으므로 주의 */
 }
 
-/* 네비게이션 바 */
-.nav-bar {
-    padding: 10px;
-    background: #2b2b3b;
+/* 런처 스타일 */
+.launcher {
+    width: 80px;
+    background: rgba(44, 62, 80, 0.95); /* 원래의 어두운 배경 색상 */
+    backdrop-filter: blur(5px); /* 블러 효과 */
     display: flex;
-    gap: 10px;
+    flex-direction: column;
     align-items: center;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    padding-top: 20px;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    z-index: 1000;
 }
 
-/* 아이콘 버튼 */
-.icon-btn {
-    background: transparent;
+/* 런처 버튼 스타일 */
+.launcher-btn {
+    width: 60px; /* 버튼 크기 조절 */
+    height: 60px;
+    margin: 10px 0;
+    background: rgba(255, 255, 255, 0.1);
     border: none;
-    font-size: 1.5em;
+    border-radius: 8px;
+    color: #ecf0f1;
+    font-size: 1.2em;
     cursor: pointer;
-    color: #ffffff;
-    transition: color 0.3s;
+    transition: background 0.3s, transform 0.2s;
     position: relative; /* 툴팁 위치를 위한 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.icon-btn:hover {
-    color: #82b1ff;
+/* PNG 아이콘 스타일링 */
+.launcher-icon {
+    width: 36px; /* 아이콘의 너비 조절 */
+    height: 36px;
+    transition: transform 0.3s, filter 0.3s;
+    filter: drop-shadow(0 0 2px rgba(0,0,0,0.5));
+}
+
+/* 호버 시 아이콘 스타일 변경 */
+.launcher-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.1);
+}
+
+.launcher-btn:hover .launcher-icon {
+    transform: rotate(15deg) scale(1.1); /* 호버 시 아이콘 회전 및 확대 */
+    filter: drop-shadow(0 0 4px rgba(0,0,0,0.7));
 }
 
 /* 툴팁 스타일 */
-.icon-btn::after {
+.launcher-btn::after {
     content: attr(data-tooltip);
     position: absolute;
-    bottom: 125%; /* 아이콘 위에 위치 */
-    left: 50%;
-    transform: translateX(-50%);
-    background: rgba(26, 26, 40, 0.95);
-    color: #fff;
+    left: 110%;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(44, 62, 80, 0.95);
+    color: #ecf0f1;
     padding: 5px 10px;
     border-radius: 4px;
     white-space: nowrap;
-    font-size: 0.9em;
+    font-size: 0.8em;
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.3s;
-    z-index: 1000; /* 높은 z-index 설정 */
+    z-index: 1001; /* 높은 z-index 설정 */
 }
 
-.icon-btn::before {
+.launcher-btn::before {
     content: '';
     position: absolute;
-    bottom: 115%; /* 아이콘 위에 삼각형 */
-    left: 50%;
-    transform: translateX(-50%);
+    left: 100%;
+    top: 50%;
+    transform: translateY(-50%);
     border-width: 5px;
     border-style: solid;
-    border-color: rgba(26, 26, 40, 0.95) transparent transparent transparent;
+    border-color: transparent rgba(44, 62, 80, 0.95) transparent transparent;
     opacity: 0;
     transition: opacity 0.3s;
     pointer-events: none;
-    z-index: 1000; /* 높은 z-index 설정 */
+    z-index: 1001; /* 높은 z-index 설정 */
 }
 
-.icon-btn:hover::after,
-.icon-btn:hover::before {
+.launcher-btn:hover::after,
+.launcher-btn:hover::before {
     opacity: 1;
+}
+
+/* 메인 컨텐츠 스타일 */
+.main-content {
+    margin-left: 80px; /* 런처 너비만큼 왼쪽 여백 */
+    padding: 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 /* 메인 로고 */
@@ -96,13 +135,14 @@ body {
 .logo-text {
     font-size: 3em;
     font-weight: 700;
-    color: #82b1ff;
+    color: #ffffff; /* 흰색으로 변경 */
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
     margin-bottom: 10px;
 }
 
 .logo-tagline {
     font-size: 1em;
-    color: #aaa;
+    color: #bdc3c7;
     margin-bottom: 20px;
 }
 
@@ -110,7 +150,7 @@ body {
 .proxy-status-message {
     margin-top: 20px;
     font-size: 1.2em;
-    color: #4CAF50; /* Green color indicating success */
+    color: #27ae60; /* 성공을 나타내는 녹색 */
     animation: fadeIn 0.5s ease-in-out;
 }
 
@@ -122,7 +162,43 @@ body {
 /* 연결 시간 스타일 */
 #connectionTime {
     font-weight: bold;
-    color: #82b1ff; /* Blue color */
+    color: #3498db; /* 파란색 */
+}
+
+/* 연결 해제 버튼 */
+#disconnectContainer {
+    display: none;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.button-primary {
+    background: #3498db;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px; /* 버튼 크기 조절 */
+    font-size: 1em; /* 폰트 크기 조절 */
+    color: #ffffff;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.button-primary:hover {
+    background: #5dade2;
+}
+
+.button-secondary {
+    background: #bdc3c7;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px; /* 버튼 크기 조절 */
+    color: #2c3e50;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.button-secondary:hover {
+    background: #95a5a6;
 }
 
 /* 폼 그룹 */
@@ -134,25 +210,25 @@ body {
 
 form input[type="text"],
 form input[type="password"] {
-    background: #3b3b50;
-    border: 1px solid #555;
+    background: #ecf0f1;
+    border: 1px solid #bdc3c7;
     border-radius: 4px;
     padding: 10px;
-    color: #ffffff;
+    color: #2c3e50;
     font-size: 0.95em;
 }
 
 form input[type="text"]:focus,
 form input[type="password"]:focus {
-    border-color: #6a60ff;
+    border-color: #3498db;
     outline: none;
 }
 
 form button {
-    background: #6a60ff;
+    background: #3498db;
     border: none;
     border-radius: 4px;
-    padding: 10px;
+    padding: 10px 20px; /* 버튼 크기 조절 */
     font-size: 0.95em;
     color: #ffffff;
     cursor: pointer;
@@ -161,7 +237,7 @@ form button {
 }
 
 form button:hover {
-    background: #7d72ff;
+    background: #5dade2;
 }
 
 /* 기능 스위치 */
@@ -189,7 +265,7 @@ form button:hover {
     position: relative;
     width: 46px;
     height: 24px;
-    background-color: #555;
+    background-color: #ccc;
     border-radius: 9999px;
     transition: background-color 0.3s, box-shadow 0.3s;
     cursor: pointer;
@@ -208,8 +284,8 @@ form button:hover {
 }
 
 .switch input[type="checkbox"]:checked + .slider {
-    background-color: #6a60ff;
-    box-shadow: 0 0 0 2px rgba(106,96,255,0.3);
+    background-color: #3498db;
+    box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.3);
 }
 
 .switch input[type="checkbox"]:checked + .slider::before {
@@ -218,7 +294,7 @@ form button:hover {
 
 .feature-label {
     font-size: 0.95em;
-    color: #ffffff;
+    color: #2c3e50;
     user-select: none;
 }
 
@@ -234,240 +310,326 @@ form button:hover {
     display: flex;
     flex-direction: column;
     gap: 5px;
-    background: #3b3b50;
+    background: #ecf0f1;
     border-radius: 8px;
     padding: 10px;
 }
 
 .status-label {
     font-size: 0.85em;
-    color: #aaa;
+    color: #2c3e50; /* 텍스트 색상을 진하게 변경 */
+    font-weight: bold;
 }
 
-/* 모달 배경 */
+.status-value {
+    font-size: 0.9em;
+    color: #2c3e50; /* 텍스트 색상을 진하게 변경 */
+    font-weight: bold;
+}
+
+/* 활동 개요 오버레이 스타일 */
+.overview-overlay {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 900px; /* 크기 확대 */
+    height: 700px; /* 크기 확대 */
+    transform: translate(-50%, -50%);
+    background: rgba(255, 255, 255, 0.95); /* 밝은 반투명 배경 */
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+    display: none;
+    flex-direction: column;
+    z-index: 10000; /* 높은 z-index */
+}
+
+.overview-overlay .overview-content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* 스냅샷이 왼쪽에 정렬되도록 변경 */
+    justify-content: flex-start;
+    overflow-y: auto; /* 스크롤 가능하도록 설정 */
+}
+
+.overview-overlay .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    color: #2c3e50;
+    font-size: 1.5em;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.overview-overlay .close-btn:hover {
+    color: #e74c3c;
+}
+
+/* 스냅샷 컨테이너 */
+.snapshot-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    overflow-y: auto;
+}
+
+/* 개별 스냅샷 */
+.snapshot {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    height: 200px;
+    border: 2px solid #bdc3c7;
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    transition: transform 0.2s, box-shadow 0.3s;
+    background: #ecf0f1;
+}
+
+.snapshot:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 15px rgba(52, 152, 219, 0.7);
+}
+
+.snapshot img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.snapshot-description {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(44, 62, 80, 0.8); /* 어두운 반투명 배경 */
+    color: #ffffff; /* 텍스트 색상을 흰색으로 변경 */
+    padding: 5px;
+    font-size: 1em;
+    text-align: center;
+}
+
+.snapshot-close-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: rgba(231, 76, 60, 0.8);
+    border: none;
+    color: #fff;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    font-size: 1.2em;
+    line-height: 25px;
+    text-align: center;
+    padding: 0;
+}
+
+.snapshot-close-btn:hover {
+    background: rgba(231, 76, 60, 1);
+}
+
+/* 반응형 디자인 */
+@media (max-width: 1200px) {
+    .overview-overlay {
+        width: 95%;
+        height: 80%;
+    }
+
+    .snapshot {
+        height: 180px;
+    }
+
+    .snapshot-description {
+        font-size: 0.9em;
+    }
+
+    .snapshot-close-btn {
+        width: 20px;
+        height: 20px;
+        font-size: 1em;
+    }
+}
+
+/* 기존 창 제어 버튼 스타일 유지 */
+.window-controls button {
+    background: none;
+    border: none;
+    color: #2c3e50;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: color 0.3s;
+    margin-left: 10px; /* 버튼 간 간격 조정 */
+}
+
+.window-controls button:hover {
+    color: #e74c3c;
+}
+
+/* 모달 백드롭 스타일 */
 .modal-backdrop {
     position: fixed;
     top: 0;
     left: 0;
-    right:0;
-    bottom:0;
-    background: rgba(0,0,0,0.5);
-    display: none;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.6);
+    display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 1000;
 }
 
-/* 모달 창 */
+.modal-backdrop.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* 모달 창 스타일 */
 .modal {
-    background: #2f2f44;
-    border-radius:8px;
+    background: #ffffff;
+    border-radius: 10px;
     width: 600px;
-    height: 400px;
-    box-shadow:0 4px 10px rgba(0,0,0,0.3);
+    max-width: 90%;
+    max-height: 90%;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
-    position: fixed;
-    top:50%;
-    left:50%;
-    transform:translate(-50%,-50%);
-    user-select: none;
+    position: relative;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
 }
 
+/* 모달 헤더 */
 .modal-header {
-    display:flex;
+    background: #ecf0f1;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
     justify-content: space-between;
-    align-items:center;
-    padding:10px;
-    border-bottom:1px solid #555;
     cursor: move;
 }
 
+/* 모달 제목 */
 .modal-header h2 {
-    font-size:1.2em;
-    color:#c0c0c0;
+    font-size: 1.5em;
+    color: #2c3e50;
 }
 
-.close-btn {
-    background:none;
-    border:none;
-    font-size:1.2em;
-    color:#fff;
-    cursor:pointer;
-    transition:color 0.3s;
-}
-
-.close-btn:hover {
-    color:#ff7d7d;
-}
-
+/* 모달 콘텐츠 */
 .modal-content {
-    padding:20px;
+    padding: 20px;
+    overflow-y: auto;
     flex: 1;
-    overflow:hidden;
-    position:relative;
-    display:flex;
-    flex-direction:column;
+    background: #f9f9f9;
 }
 
+/* 리사이즈 핸들 */
 .modal-resize-handle {
+    width: 15px;
+    height: 15px;
+    background: transparent;
     position: absolute;
-    width: 10px;
-    height: 10px;
-    right: 2px;
-    bottom: 2px;
+    bottom: 0;
+    right: 0;
     cursor: se-resize;
-    background: #aaa;
-    border-radius: 2px;
 }
 
 /* 터미널 */
 .terminal-container {
-    display:flex;
-    flex-direction:column;
-    flex:1;
-    overflow:hidden;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    overflow: hidden;
+    width: 100%; /* 터미널 창의 너비를 100%로 변경 */
+    height: 100%; /* 터미널 창의 높이를 100%로 변경 */
 }
 
 .terminal-output {
-    background: #1a1a28;
+    background: #2c3e50;
     border-radius: 8px;
     padding: 10px;
-    flex:1;
-    overflow-y: auto;
+    flex: 1;
+    overflow-y: auto; /* 스크롤 가능하도록 설정 */
     font-family: Consolas, 'Courier New', monospace;
     font-size: 0.9em;
-    color: #ddd;
+    color: #ecf0f1;
     box-shadow: inset 0 0 5px rgba(0,0,0,0.5);
     margin-bottom: 10px;
+    position: relative;
+}
+
+/* 스크롤바 숨김 */
+.terminal-output::-webkit-scrollbar {
+    display: none;
+}
+
+.terminal-output {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
 }
 
 .terminal-input-wrap {
-    display:flex;
+    display: flex;
 }
 
 #terminalInput {
-    background: #3b3b50;
-    border: 1px solid #555;
+    background: #bdc3c7;
+    border: 1px solid #95a5a6;
     border-radius: 4px;
     padding: 10px;
-    color: #ffffff;
+    color: #2c3e50;
     font-size: 0.95em;
     width: 100%;
 }
 
 #terminalInput:focus {
-    border-color: #6a60ff;
+    border-color: #3498db;
     outline: none;
 }
 
 /* 경고 모달 */
 .warning-modal {
-    display:flex;
-    flex-direction:column;
-    gap:15px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
 
 .warning-header {
-    display:flex;
-    align-items:center;
-    gap:10px;
-    font-size:1.2em;
-    color:#c0c0c0;
-    font-weight:600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.2em;
+    color: #2c3e50;
+    font-weight: 600;
 }
 
 .warning-icon {
-    font-size:1.4em;
+    font-size: 1.4em;
 }
 
 .warning-message {
-    font-size:0.95em;
-    color:#ddd;
-    line-height:1.4;
-}
-
-.button-bar,
-.warning-footer {
-    display:flex;
-    gap:10px;
-    justify-content:flex-end;
-}
-
-.button-primary {
-    background:#6a60ff;
-    border:none;
-    border-radius:4px;
-    padding:10px;
-    color:#ffffff;
-    cursor:pointer;
-    transition:background 0.3s;
-}
-
-.button-primary:hover {
-    background:#7d72ff;
-}
-
-.button-secondary {
-    background:#444;
-    border:none;
-    border-radius:4px;
-    padding:10px;
-    color:#ffffff;
-    cursor:pointer;
-    transition:background 0.3s;
-}
-
-.button-secondary:hover {
-    background:#555;
+    font-size: 0.95em;
+    color: #2c3e50; /* 텍스트 색상을 진하게 변경 */
+    line-height: 1.4;
 }
 
 .confirm-buttons {
-    display:flex;
-    gap:10px;
-    margin-top:20px;
-    justify-content:flex-end;
-}
-
-/* 프록시 연결 상태 메시지 */
-.proxy-status-message {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
     margin-top: 20px;
-    font-size: 1.2em;
-    color: #4CAF50; /* Green color indicating success */
-    animation: fadeIn 0.5s ease-in-out;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-/* 연결 시간 스타일 */
-#connectionTime {
-    font-weight: bold;
-    color: #82b1ff; /* Blue color */
-}
-
-/* 반응형 디자인 */
-@media (max-width: 480px) {
-    .status-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .modal {
-        width: 90%;
-        height: 80%;
-    }
-
-    .logo-text {
-        font-size: 2.5em;
-    }
-
-    .proxy-status-message {
-        font-size: 1em;
-    }
-
-    #connectionTime {
-        font-size: 1em;
-    }
 }

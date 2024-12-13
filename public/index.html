@@ -4,41 +4,60 @@
     <meta charset="UTF-8">
     <title>ExoProxy Dashboard</title>
     <link rel="stylesheet" href="styles.css">
+    <!-- html2canvas CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 </head>
 <body>
-    <!-- 네비게이션 바 -->
-    <div class="nav-bar">
-        <button id="openFrontendModal" class="icon-btn" data-tooltip="프론트엔드 URL 등록">🏠</button>
-        <button id="openFeaturesModal" class="icon-btn" data-tooltip="기능 활성화">⚙️</button>
-        <button id="openStatusModal" class="icon-btn" data-tooltip="상태 패널">📊</button>
-        <button id="openTerminalModal" class="icon-btn" data-tooltip="터미널">💻</button>
-        <button id="forwardProxyIcon" class="icon-btn" data-tooltip="포워드 프록시 활성화">➡️</button>
-        <button id="powerOffBtn" class="icon-btn" data-tooltip="시스템 종료">🔌</button>
+    <!-- 런처 (좌측 사이드바) -->
+    <div class="launcher">
+        <button id="openFrontendModal" class="launcher-btn" data-tooltip="프론트엔드 URL 등록" aria-label="프론트엔드 URL 등록">
+            <img src="icons/home.png" alt="홈 아이콘" class="launcher-icon">
+        </button>
+        <button id="openFeaturesModal" class="launcher-btn" data-tooltip="기능 활성화" aria-label="기능 활성화">
+            <img src="icons/settings.png" alt="설정 아이콘" class="launcher-icon">
+        </button>
+        <button id="openStatusModal" class="launcher-btn" data-tooltip="상태 패널" aria-label="상태 패널">
+            <img src="icons/bar-chart.png" alt="상태 아이콘" class="launcher-icon">
+        </button>
+        <button id="openTerminalModal" class="launcher-btn" data-tooltip="터미널" aria-label="터미널">
+            <img src="icons/terminal.png" alt="터미널 아이콘" class="launcher-icon">
+        </button>
+        <button id="forwardProxyIcon" class="launcher-btn" data-tooltip="포워드 프록시 활성화" aria-label="포워드 프록시 활성화">
+            <img src="icons/arrow-forward.png" alt="포워드 프록시 아이콘" class="launcher-icon">
+        </button>
+        <button id="powerOffBtn" class="launcher-btn" data-tooltip="시스템 종료" aria-label="시스템 종료">
+            <img src="icons/power-off.png" alt="시스템 종료 아이콘" class="launcher-icon">
+        </button>
+        <!-- 활동 개요 버튼 -->
+        <button id="activitiesOverviewBtn" class="launcher-btn" data-tooltip="활동 개요" aria-label="활동 개요">
+            <img src="icons/overview.png" alt="활동 개요 아이콘" class="launcher-icon">
+        </button>
     </div>
 
-    <div class="centered-logo">
-        <div class="logo-text">EXO PROXY</div>
-        <div class="logo-tagline">Your Secure and Anonymous Proxy</div>
-        <!-- 프록시 연결 상태 표시 -->
-        <div id="proxyStatusMessage" class="proxy-status-message" style="display: none;">
-            프록시 서버에 연결되었습니다. 연결 시간: <span id="connectionTime">00:00:00</span>
+    <!-- 메인 컨텐츠 영역 -->
+    <div class="main-content">
+        <div class="centered-logo">
+            <div class="logo-text">EXO PROXY</div>
+            <div class="logo-tagline">Your Secure and Anonymous Proxy</div>
+            <!-- 프록시 연결 상태 표시 -->
+            <div id="proxyStatusMessage" class="proxy-status-message" style="display: none;">
+                프록시 서버에 연결되었습니다. 연결 시간: <span id="connectionTime">00:00:00</span>
+            </div>
+        </div>
+
+        <!-- 포워드 모드 시 표시할 연결 해제 버튼 -->
+        <div id="disconnectContainer" style="display: none; text-align:center; margin-bottom:20px;">
+            <button id="disconnectButton" class="button-primary">연결 해제</button>
         </div>
     </div>
 
-    <!-- 포워드 모드 시 표시할 연결 해제 버튼 -->
-    <div id="disconnectContainer" style="display: none; text-align:center; margin-bottom:20px;">
-        <button id="disconnectButton" class="button-primary">연결 해제</button>
-    </div>
-
-    <!-- 모달 백드롭 -->
-    <div id="modalBackdrop" class="modal-backdrop">
-        <div id="modalWindow" class="modal">
-            <div class="modal-header">
-                <h2 id="modalTitle"></h2>
-                <button id="closeModalBtn" class="close-btn">&times;</button>
+    <!-- 활동 개요 전체 화면 오버레이 -->
+    <div id="overviewOverlay" class="overview-overlay" style="display: none;">
+        <div class="overview-content">
+            <button id="closeOverviewBtn" class="close-btn">&times;</button>
+            <div id="snapshotContainer" class="snapshot-container">
+                <!-- 스냅샷 썸네일이 여기에 추가됩니다 -->
             </div>
-            <div id="modalContent" class="modal-content"></div>
-            <div id="modalResizeHandle" class="modal-resize-handle"></div>
         </div>
     </div>
 
@@ -92,27 +111,27 @@
         <div class="status-grid">
             <div class="status-item">
                 <span class="status-label">운영 모드:</span>
-                <span id="apiStatusValue">OFF</span>
+                <span id="apiStatusValue" class="status-value">OFF</span>
             </div>
             <div class="status-item">
                 <span class="status-label">경로 암호화:</span>
-                <span id="encryptStatus">OFF</span>
+                <span id="encryptStatus" class="status-value">OFF</span>
             </div>
             <div class="status-item">
                 <span class="status-label">데이터 암호화:</span>
-                <span id="dataEncryptStatus">OFF</span>
+                <span id="dataEncryptStatus" class="status-value">OFF</span>
             </div>
             <div class="status-item">
                 <span class="status-label">파일 암호화:</span>
-                <span id="fileEncryptStatus">OFF</span>
+                <span id="fileEncryptStatus" class="status-value">OFF</span>
             </div>
             <div class="status-item">
                 <span class="status-label">랜덤 분산:</span>
-                <span id="distributionStatus">OFF</span>
+                <span id="distributionStatus" class="status-value">OFF</span>
             </div>
             <div class="status-item">
                 <span class="status-label">익명성 보장:</span>
-                <span id="anonymityStatus">OFF</span>
+                <span id="anonymityStatus" class="status-value">OFF</span>
             </div>
         </div>
     </template>

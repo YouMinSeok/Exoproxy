@@ -1,4 +1,6 @@
 {
-  "mode": "forward",
-  "frontend": []
+  "mode": "reverse",
+  "frontend": [
+    "http://localhost:3000/"
+  ]
 }
