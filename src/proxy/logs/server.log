@@ -3568,3 +3568,35 @@
 2024-12-13T06:32:14.363Z [INFO]: Received GET request for /status
 2024-12-13T06:32:38.161Z [INFO]: Received GET request for /features
 2024-12-13T06:34:13.445Z [INFO]: Received GET request for /status
+2024-12-13T06:40:57.958Z [INFO]: Received GET request for /status
+2024-12-13T06:41:21.040Z [INFO]: Received GET request for /status
+2024-12-13T06:48:18.582Z [INFO]: Received GET request for /status
+2024-12-13T06:49:23.098Z [INFO]: Received GET request for /status
+2024-12-13T06:49:23.104Z [INFO]: Received GET request for /features
+2024-12-13T06:49:23.545Z [INFO]: Received GET request for /status
+2024-12-13T06:49:23.551Z [INFO]: Received GET request for /features
+2024-12-13T06:53:12.456Z [INFO]: Received GET request for /status
+2024-12-13T06:54:31.208Z [INFO]: Received GET request for /features
+2024-12-13T06:54:40.772Z [INFO]: Received POST request for /command
+2024-12-13T06:55:05.890Z [INFO]: Received GET request for /status
+2024-12-13T06:55:05.896Z [INFO]: Received GET request for /features
+2024-12-13T06:55:07.430Z [INFO]: Received GET request for /status
+2024-12-13T06:55:07.434Z [INFO]: Received GET request for /features
+2024-12-13T06:55:14.741Z [INFO]: Received GET request for /features
+2024-12-13T06:57:11.231Z [INFO]: Received GET request for /status
+2024-12-13T06:57:31.250Z [INFO]: Received GET request for /features
+2024-12-13T06:57:33.173Z [INFO]: Received POST request for /toggle-feature
+2024-12-13T06:57:33.175Z [INFO]: anonymity 기능이 활성화되었습니다.
+2024-12-13T06:57:37.907Z [INFO]: Received GET request for /features
+2024-12-13T06:57:38.753Z [INFO]: Received POST request for /toggle-feature
+2024-12-13T06:57:38.762Z [INFO]: anonymity 기능이 비활성화되었습니다.
+2024-12-13T06:57:40.771Z [INFO]: Received GET request for /features
+2024-12-13T06:57:41.821Z [INFO]: Received POST request for /toggle-feature
+2024-12-13T06:57:41.822Z [INFO]: ipHide 기능이 활성화되었습니다.
+2024-12-13T06:57:44.151Z [INFO]: Received GET request for /features
+2024-12-13T06:57:51.930Z [INFO]: Received POST request for /toggle-feature
+2024-12-13T06:57:51.930Z [INFO]: ipHide 기능이 비활성화되었습니다.
+2024-12-13T06:58:10.077Z [INFO]: Received POST request for /set-mode
+2024-12-13T06:58:10.081Z [INFO]: 운영 모드가 forward으로 변경되었습니다.
+2024-12-13T06:58:24.654Z [INFO]: Received POST request for /set-mode
+2024-12-13T06:58:24.655Z [INFO]: 운영 모드가 reverse으로 변경되었습니다.

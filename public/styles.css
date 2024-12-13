@@ -1,5 +1,33 @@
 /* styles.css */
 
+/* CSS 변수 정의 */
+:root {
+    --color-launcher-bg: rgba(44, 62, 80, 0.85); /* 런처 바 배경 불투명도 조정 */
+    --color-launcher-hover: rgba(255, 255, 255, 0.2);
+    --color-button-primary: #3498db;
+    --color-button-primary-hover: #5dade2;
+    --color-button-secondary: #bdc3c7;
+    --color-button-secondary-hover: #95a5a6;
+    --color-modal-bg: #ffffff;
+    --color-modal-header-bg: #ecf0f1;
+    --color-text-primary: #2c3e50;
+    --color-text-secondary: #ecf0f1;
+    --color-tooltip-bg: rgba(44, 62, 80, 0.9);
+    --color-tooltip-text: #ecf0f1;
+    --color-snapshot-bg: #ecf0f1;
+    --color-snapshot-border: #bdc3c7;
+    --color-snapshot-description-bg: rgba(44, 62, 80, 0.8);
+    --color-snapshot-description-text: #ffffff;
+    --color-snapshot-close-bg: rgba(231, 76, 60, 0.8);
+    --color-snapshot-close-hover-bg: rgba(231, 76, 60, 1);
+    --font-family: 'Roboto', sans-serif;
+    --blur-value: 10px; /* 글래스모픽 블러 값 */
+    --transition-duration: 0.3s;
+    --aurora-color1: rgba(26, 188, 156, 0.6);
+    --aurora-color2: rgba(52, 152, 219, 0.6);
+    --aurora-color3: rgba(44, 62, 80, 0.6);
+}
+
 /* 기본 스타일 리셋 */
 * {
     margin: 0;
@@ -9,19 +37,35 @@
 
 /* 본문 스타일 */
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Ubuntu, sans-serif;
-    background: linear-gradient(135deg, #2c3e50, #34495e); /* 리눅스/우분투 스타일의 어두운 그라데이션 */
-    color: #ecf0f1;
+    font-family: var(--font-family);
+    background: radial-gradient(circle at 50% 50%, var(--aurora-color1), var(--aurora-color2), var(--aurora-color3));
+    color: var(--color-text-secondary);
     min-height: 100vh;
     display: flex;
     overflow: hidden; /* 툴팁에 영향 줄 수 있으므로 주의 */
+    position: relative;
+    /* 오로라 효과 */
+    animation: aurora 15s infinite alternate;
+}
+
+/* 은은한 오로라 애니메이션 */
+@keyframes aurora {
+    0% {
+        background: radial-gradient(circle at 50% 50%, var(--aurora-color1), var(--aurora-color2), var(--aurora-color3));
+    }
+    50% {
+        background: radial-gradient(circle at 50% 50%, rgba(26, 188, 156, 0.5), rgba(52, 152, 219, 0.5), rgba(44, 62, 80, 0.5));
+    }
+    100% {
+        background: radial-gradient(circle at 50% 50%, var(--aurora-color1), var(--aurora-color2), var(--aurora-color3));
+    }
 }
 
 /* 런처 스타일 */
 .launcher {
     width: 80px;
-    background: rgba(44, 62, 80, 0.95); /* 원래의 어두운 배경 색상 */
-    backdrop-filter: blur(5px); /* 블러 효과 */
+    background: var(--color-launcher-bg);
+    backdrop-filter: blur(var(--blur-value)); /* 글래스모픽 효과 */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -32,42 +76,49 @@ body {
     left: 0;
     height: 100%;
     z-index: 1000;
+    border-right: 1px solid rgba(255, 255, 255, 0.2); /* 경계선 추가 */
+    border-radius: 0 10px 10px 0; /* 오른쪽 모서리 둥글게 */
 }
 
 /* 런처 버튼 스타일 */
 .launcher-btn {
-    width: 60px; /* 버튼 크기 조절 */
+    width: 60px;
     height: 60px;
     margin: 10px 0;
     background: rgba(255, 255, 255, 0.1);
     border: none;
-    border-radius: 8px;
-    color: #ecf0f1;
+    border-radius: 50%; /* 물방울 느낌을 위해 원형으로 변경 */
+    color: var(--color-text-secondary);
     font-size: 1.2em;
     cursor: pointer;
-    transition: background 0.3s, transform 0.2s;
-    position: relative; /* 툴팁 위치를 위한 */
+    transition: background var(--transition-duration), transform var(--transition-duration), box-shadow var(--transition-duration);
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
+.launcher-btn:focus {
+    outline: 2px solid var(--color-button-primary);
+}
+
 /* PNG 아이콘 스타일링 */
 .launcher-icon {
-    width: 36px; /* 아이콘의 너비 조절 */
+    width: 36px;
     height: 36px;
-    transition: transform 0.3s, filter 0.3s;
+    transition: transform var(--transition-duration), filter var(--transition-duration);
     filter: drop-shadow(0 0 2px rgba(0,0,0,0.5));
 }
 
 /* 호버 시 아이콘 스타일 변경 */
 .launcher-btn:hover {
     background: rgba(255, 255, 255, 0.3);
-    transform: scale(1.1);
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* 그림자 추가 */
 }
 
 .launcher-btn:hover .launcher-icon {
-    transform: rotate(15deg) scale(1.1); /* 호버 시 아이콘 회전 및 확대 */
+    transform: rotate(10deg) scale(1.05);
     filter: drop-shadow(0 0 4px rgba(0,0,0,0.7));
 }
 
@@ -78,16 +129,16 @@ body {
     left: 110%;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(44, 62, 80, 0.95);
-    color: #ecf0f1;
+    background: var(--color-tooltip-bg);
+    color: var(--color-tooltip-text);
     padding: 5px 10px;
     border-radius: 4px;
     white-space: nowrap;
     font-size: 0.8em;
     opacity: 0;
     pointer-events: none;
-    transition: opacity 0.3s;
-    z-index: 1001; /* 높은 z-index 설정 */
+    transition: opacity var(--transition-duration);
+    z-index: 1001;
 }
 
 .launcher-btn::before {
@@ -98,11 +149,11 @@ body {
     transform: translateY(-50%);
     border-width: 5px;
     border-style: solid;
-    border-color: transparent rgba(44, 62, 80, 0.95) transparent transparent;
+    border-color: transparent var(--color-tooltip-bg) transparent transparent;
     opacity: 0;
-    transition: opacity 0.3s;
+    transition: opacity var(--transition-duration);
     pointer-events: none;
-    z-index: 1001; /* 높은 z-index 설정 */
+    z-index: 1001;
 }
 
 .launcher-btn:hover::after,
@@ -112,7 +163,7 @@ body {
 
 /* 메인 컨텐츠 스타일 */
 .main-content {
-    margin-left: 80px; /* 런처 너비만큼 왼쪽 여백 */
+    margin-left: 80px;
     padding: 20px;
     flex: 1;
     display: flex;
@@ -135,13 +186,13 @@ body {
 .logo-text {
     font-size: 3em;
     font-weight: 700;
-    color: #ffffff; /* 흰색으로 변경 */
+    color: #ffffff;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
     margin-bottom: 10px;
 }
 
 .logo-tagline {
-    font-size: 1em;
+    font-size: 1.2em;
     color: #bdc3c7;
     margin-bottom: 20px;
 }
@@ -150,7 +201,7 @@ body {
 .proxy-status-message {
     margin-top: 20px;
     font-size: 1.2em;
-    color: #27ae60; /* 성공을 나타내는 녹색 */
+    color: #27ae60;
     animation: fadeIn 0.5s ease-in-out;
 }
 
@@ -162,7 +213,7 @@ body {
 /* 연결 시간 스타일 */
 #connectionTime {
     font-weight: bold;
-    color: #3498db; /* 파란색 */
+    color: #3498db;
 }
 
 /* 연결 해제 버튼 */
@@ -172,33 +223,45 @@ body {
     margin-bottom: 20px;
 }
 
+/* 버튼 스타일 */
 .button-primary {
-    background: #3498db;
+    background: var(--color-button-primary);
     border: none;
     border-radius: 4px;
-    padding: 10px 20px; /* 버튼 크기 조절 */
-    font-size: 1em; /* 폰트 크기 조절 */
+    padding: 10px 20px;
+    font-size: 1em;
     color: #ffffff;
     cursor: pointer;
-    transition: background 0.3s;
+    transition: background var(--transition-duration), transform var(--transition-duration);
 }
 
 .button-primary:hover {
-    background: #5dade2;
+    background: var(--color-button-primary-hover);
+    transform: translateY(-2px);
+}
+
+.button-primary:focus {
+    outline: 2px solid #ffffff;
 }
 
 .button-secondary {
-    background: #bdc3c7;
+    background: var(--color-button-secondary);
     border: none;
     border-radius: 4px;
-    padding: 10px 20px; /* 버튼 크기 조절 */
-    color: #2c3e50;
+    padding: 10px 20px;
+    font-size: 1em;
+    color: var(--color-text-primary);
     cursor: pointer;
-    transition: background 0.3s;
+    transition: background var(--transition-duration), transform var(--transition-duration);
 }
 
 .button-secondary:hover {
-    background: #95a5a6;
+    background: var(--color-button-secondary-hover);
+    transform: translateY(-2px);
+}
+
+.button-secondary:focus {
+    outline: 2px solid var(--color-button-primary);
 }
 
 /* 폼 그룹 */
@@ -206,44 +269,58 @@ body {
     display: flex;
     flex-direction: column;
     gap: 5px;
+    margin-bottom: 15px;
 }
 
-form input[type="text"],
-form input[type="password"] {
+form label {
+    font-size: 0.95em;
+    color: var(--color-text-primary);
+}
+
+form input[type="url"],
+form input[type="password"],
+form input[type="text"] {
     background: #ecf0f1;
     border: 1px solid #bdc3c7;
     border-radius: 4px;
     padding: 10px;
     color: #2c3e50;
     font-size: 0.95em;
+    transition: border-color var(--transition-duration);
 }
 
-form input[type="text"]:focus,
-form input[type="password"]:focus {
-    border-color: #3498db;
+form input[type="url"]:focus,
+form input[type="password"]:focus,
+form input[type="text"]:focus {
+    border-color: var(--color-button-primary);
     outline: none;
 }
 
 form button {
-    background: #3498db;
+    background: var(--color-button-primary);
     border: none;
     border-radius: 4px;
-    padding: 10px 20px; /* 버튼 크기 조절 */
+    padding: 10px 20px;
     font-size: 0.95em;
     color: #ffffff;
     cursor: pointer;
-    transition: background 0.3s;
+    transition: background var(--transition-duration), transform var(--transition-duration);
     margin-top: 10px;
 }
 
 form button:hover {
-    background: #5dade2;
+    background: var(--color-button-primary-hover);
+    transform: translateY(-2px);
+}
+
+form button:focus {
+    outline: 2px solid #ffffff;
 }
 
 /* 기능 스위치 */
 .features-grid {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     gap: 15px;
 }
 
@@ -267,7 +344,7 @@ form button:hover {
     height: 24px;
     background-color: #ccc;
     border-radius: 9999px;
-    transition: background-color 0.3s, box-shadow 0.3s;
+    transition: background-color var(--transition-duration), box-shadow var(--transition-duration);
     cursor: pointer;
 }
 
@@ -280,11 +357,11 @@ form button:hover {
     top: 2px;
     background-color: #ffffff;
     border-radius: 50%;
-    transition: transform 0.3s;
+    transition: transform var(--transition-duration);
 }
 
 .switch input[type="checkbox"]:checked + .slider {
-    background-color: #3498db;
+    background-color: var(--color-button-primary);
     box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.3);
 }
 
@@ -294,7 +371,7 @@ form button:hover {
 
 .feature-label {
     font-size: 0.95em;
-    color: #2c3e50;
+    color: var(--color-text-primary);
     user-select: none;
 }
 
@@ -317,13 +394,13 @@ form button:hover {
 
 .status-label {
     font-size: 0.85em;
-    color: #2c3e50; /* 텍스트 색상을 진하게 변경 */
+    color: var(--color-text-primary);
     font-weight: bold;
 }
 
 .status-value {
     font-size: 0.9em;
-    color: #2c3e50; /* 텍스트 색상을 진하게 변경 */
+    color: var(--color-text-primary);
     font-weight: bold;
 }
 
@@ -332,15 +409,15 @@ form button:hover {
     position: fixed;
     top: 50%;
     left: 50%;
-    width: 900px; /* 크기 확대 */
-    height: 700px; /* 크기 확대 */
+    width: 900px;
+    height: 700px;
     transform: translate(-50%, -50%);
-    background: rgba(255, 255, 255, 0.95); /* 밝은 반투명 배경 */
+    background: rgba(255, 255, 255, 0.95);
     border-radius: 10px;
     box-shadow: 0 4px 20px rgba(0,0,0,0.5);
     display: none;
     flex-direction: column;
-    z-index: 10000; /* 높은 z-index */
+    z-index: 10000;
 }
 
 .overview-overlay .overview-content {
@@ -350,9 +427,9 @@ form button:hover {
     padding: 20px;
     display: flex;
     flex-direction: column;
-    align-items: flex-start; /* 스냅샷이 왼쪽에 정렬되도록 변경 */
+    align-items: flex-start;
     justify-content: flex-start;
-    overflow-y: auto; /* 스크롤 가능하도록 설정 */
+    overflow-y: auto;
 }
 
 .overview-overlay .close-btn {
@@ -361,10 +438,10 @@ form button:hover {
     right: 10px;
     background: none;
     border: none;
-    color: #2c3e50;
+    color: var(--color-text-primary);
     font-size: 1.5em;
     cursor: pointer;
-    transition: color 0.3s;
+    transition: color var(--transition-duration);
 }
 
 .overview-overlay .close-btn:hover {
@@ -387,13 +464,13 @@ form button:hover {
     width: 100%;
     max-width: 800px;
     height: 200px;
-    border: 2px solid #bdc3c7;
+    border: 2px solid var(--color-snapshot-border);
     border-radius: 8px;
     overflow: hidden;
     cursor: pointer;
     box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-    transition: transform 0.2s, box-shadow 0.3s;
-    background: #ecf0f1;
+    transition: transform var(--transition-duration), box-shadow var(--transition-duration);
+    background: var(--color-snapshot-bg);
 }
 
 .snapshot:hover {
@@ -412,8 +489,8 @@ form button:hover {
     bottom: 0;
     left: 0;
     right: 0;
-    background: rgba(44, 62, 80, 0.8); /* 어두운 반투명 배경 */
-    color: #ffffff; /* 텍스트 색상을 흰색으로 변경 */
+    background: var(--color-snapshot-description-bg);
+    color: var(--color-snapshot-description-text);
     padding: 5px;
     font-size: 1em;
     text-align: center;
@@ -423,7 +500,7 @@ form button:hover {
     position: absolute;
     top: 5px;
     right: 5px;
-    background: rgba(231, 76, 60, 0.8);
+    background: var(--color-snapshot-close-bg);
     border: none;
     color: #fff;
     border-radius: 50%;
@@ -434,10 +511,11 @@ form button:hover {
     line-height: 25px;
     text-align: center;
     padding: 0;
+    transition: background var(--transition-duration);
 }
 
 .snapshot-close-btn:hover {
-    background: rgba(231, 76, 60, 1);
+    background: var(--color-snapshot-close-hover-bg);
 }
 
 /* 반응형 디자인 */
@@ -469,8 +547,8 @@ form button:hover {
     color: #2c3e50;
     font-size: 1.2em;
     cursor: pointer;
-    transition: color 0.3s;
-    margin-left: 10px; /* 버튼 간 간격 조정 */
+    transition: color var(--transition-duration);
+    margin-left: 10px;
 }
 
 .window-controls button:hover {
@@ -490,7 +568,7 @@ form button:hover {
     justify-content: center;
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
+    transition: opacity var(--transition-duration) ease, visibility var(--transition-duration) ease;
     z-index: 1000;
 }
 
@@ -501,7 +579,7 @@ form button:hover {
 
 /* 모달 창 스타일 */
 .modal {
-    background: #ffffff;
+    background: var(--color-modal-bg);
     border-radius: 10px;
     width: 600px;
     max-width: 90%;
@@ -511,11 +589,19 @@ form button:hover {
     flex-direction: column;
     position: relative;
     box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+    transform: translateY(-50px);
+    opacity: 0;
+    transition: transform var(--transition-duration) ease, opacity var(--transition-duration) ease;
+}
+
+.modal-backdrop.show .modal {
+    transform: translateY(0);
+    opacity: 1;
 }
 
 /* 모달 헤더 */
 .modal-header {
-    background: #ecf0f1;
+    background: var(--color-modal-header-bg);
     padding: 10px 20px;
     display: flex;
     align-items: center;
@@ -526,7 +612,7 @@ form button:hover {
 /* 모달 제목 */
 .modal-header h2 {
     font-size: 1.5em;
-    color: #2c3e50;
+    color: var(--color-text-primary);
 }
 
 /* 모달 콘텐츠 */
@@ -554,8 +640,8 @@ form button:hover {
     flex-direction: column;
     flex: 1;
     overflow: hidden;
-    width: 100%; /* 터미널 창의 너비를 100%로 변경 */
-    height: 100%; /* 터미널 창의 높이를 100%로 변경 */
+    width: 100%;
+    height: 100%;
 }
 
 .terminal-output {
@@ -563,7 +649,7 @@ form button:hover {
     border-radius: 8px;
     padding: 10px;
     flex: 1;
-    overflow-y: auto; /* 스크롤 가능하도록 설정 */
+    overflow-y: auto;
     font-family: Consolas, 'Courier New', monospace;
     font-size: 0.9em;
     color: #ecf0f1;
@@ -594,10 +680,11 @@ form button:hover {
     color: #2c3e50;
     font-size: 0.95em;
     width: 100%;
+    transition: border-color var(--transition-duration);
 }
 
 #terminalInput:focus {
-    border-color: #3498db;
+    border-color: var(--color-button-primary);
     outline: none;
 }
 
@@ -613,7 +700,7 @@ form button:hover {
     align-items: center;
     gap: 10px;
     font-size: 1.2em;
-    color: #2c3e50;
+    color: var(--color-text-primary);
     font-weight: 600;
 }
 
@@ -623,7 +710,7 @@ form button:hover {
 
 .warning-message {
     font-size: 0.95em;
-    color: #2c3e50; /* 텍스트 색상을 진하게 변경 */
+    color: var(--color-text-primary);
     line-height: 1.4;
 }
 
@@ -632,4 +719,65 @@ form button:hover {
     gap: 10px;
     justify-content: flex-end;
     margin-top: 20px;
+}
+
+/* 스크린 리더 전용 */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* 반응형 디자인 개선 */
+@media (max-width: 768px) {
+    .launcher {
+        width: 60px;
+    }
+
+    .launcher-btn {
+        width: 50px;
+        height: 50px;
+    }
+
+    .launcher-icon {
+        width: 24px;
+        height: 24px;
+    }
+
+    .main-content {
+        padding: 10px;
+    }
+
+    .logo-text {
+        font-size: 2em;
+    }
+
+    .logo-tagline {
+        font-size: 1em;
+    }
+
+    .overview-overlay {
+        width: 95%;
+        height: 80%;
+    }
+
+    .snapshot {
+        height: 160px;
+    }
+
+    .snapshot-description {
+        font-size: 0.9em;
+    }
+
+    .snapshot-close-btn {
+        width: 20px;
+        height: 20px;
+        font-size: 1em;
+    }
 }
