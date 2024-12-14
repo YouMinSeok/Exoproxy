@@ -1,0 +1,100 @@
+/* public/css/main.css */
+
+/* CSS 변수 정의 */
+:root {
+    --color-launcher-bg: rgba(44, 62, 80, 0.85);
+    --color-launcher-hover: rgba(255, 255, 255, 0.2);
+    --color-button-primary: #3498db;
+    --color-button-primary-hover: #5dade2;
+    --color-button-secondary: #bdc3c7;
+    --color-button-secondary-hover: #95a5a6;
+    --color-modal-bg: #ffffff;
+    --color-modal-header-bg: #ecf0f1;
+    --color-text-primary: #2c3e50;
+    --color-text-secondary: #ecf0f1;
+    --color-tooltip-bg: rgba(44, 62, 80, 0.9);
+    --color-tooltip-text: #ecf0f1;
+    --color-snapshot-bg: #ecf0f1;
+    --color-snapshot-border: #bdc3c7;
+    --color-snapshot-description-bg: rgba(44, 62, 80, 0.8);
+    --color-snapshot-description-text: #ffffff;
+    --color-snapshot-close-bg: rgba(231, 76, 60, 0.8);
+    --color-snapshot-close-hover-bg: rgba(231, 76, 60, 1);
+    --font-family: 'Roboto', sans-serif;
+    --blur-value: 10px;
+    --transition-duration: 0.3s;
+    --aurora-color1: rgba(26, 188, 156, 0.6);
+    --aurora-color2: rgba(52, 152, 219, 0.6);
+    --aurora-color3: rgba(44, 62, 80, 0.6);
+    /* Top Bar Colors */
+    --color-topbar-bg: rgba(44, 62, 80, 0.7);
+    --color-topbar-text: #ecf0f1;
+    --color-topbar-border: rgba(255, 255, 255, 0.2);
+    --color-topbar-border-radius: 20px;
+}
+
+/* 기본 스타일 리셋 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 본문 스타일 */
+body {
+    font-family: var(--font-family);
+    background: radial-gradient(circle at 50% 50%, var(--aurora-color1), var(--aurora-color2), var(--aurora-color3));
+    color: var(--color-text-secondary);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+    animation: aurora 15s infinite alternate;
+}
+
+/* 은은한 오로라 애니메이션 */
+@keyframes aurora {
+    0% {
+        background: radial-gradient(circle at 50% 50%, var(--aurora-color1), var(--aurora-color2), var(--aurora-color3));
+    }
+    50% {
+        background: radial-gradient(circle at 50% 50%, rgba(26, 188, 156, 0.5), rgba(52, 152, 219, 0.5), rgba(44, 62, 80, 0.5));
+    }
+    100% {
+        background: radial-gradient(circle at 50% 50%, var(--aurora-color1), var(--aurora-color2), var(--aurora-color3));
+    }
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    /* 모바일 스타일 추가 */
+}
+
+/* 메인 컨텐츠 중앙 정렬 */
+.main-content {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+/* .centered-logo 중앙 정렬 수정 */
+.centered-logo {
+    text-align: center;
+    max-width: 600px; /* 원하는 최대 너비 설정 */
+}
+
+.logo-text {
+    font-size: 3em;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.logo-tagline {
+    font-size: 1.5em;
+    color: #bdc3c7;
+}
+
+/* 기타 공통 스타일 */

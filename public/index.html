@@ -1,13 +1,30 @@
+<!-- public/index.html -->
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
     <title>ExoProxy Dashboard</title>
-    <link rel="stylesheet" href="styles.css">
+    <!-- CSS 파일 불러오기 -->
+    <link rel="stylesheet" href="css/styles.css"> <!-- 공통 스타일 먼저 로드 -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/topbar.css">
+    <link rel="stylesheet" href="css/launcher.css">
+    <link rel="stylesheet" href="css/snapshots.css">
+    <link rel="stylesheet" href="css/modals.css"> <!-- 모달 스타일 마지막에 로드 -->
+    <!-- 추가적인 CSS 파일 필요 시 여기에 추가 -->
     <!-- html2canvas CDN -->
     <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 </head>
 <body>
+    <!-- 상단 바 -->
+    <div class="top-bar">
+        <div class="time-date-container">
+            <span id="currentTime" class="current-time">00:00:00</span>
+            <span id="currentDate" class="current-date">2024-04-25</span>
+        </div>
+    </div>
+
     <!-- 런처 (좌측 사이드바) -->
     <div class="launcher">
         <button id="openFrontendModal" class="launcher-btn" data-tooltip="프론트엔드 URL 등록" aria-label="프론트엔드 URL 등록">
@@ -55,6 +72,7 @@
     <div id="overviewOverlay" class="overview-overlay" style="display: none;">
         <div class="overview-content">
             <button id="closeOverviewBtn" class="close-btn">&times;</button>
+            <h2>활동 개요</h2>
             <div id="snapshotContainer" class="snapshot-container">
                 <!-- 스냅샷 썸네일이 여기에 추가됩니다 -->
             </div>
@@ -66,9 +84,9 @@
         <form id="frontendForm">
             <div class="form-group">
                 <label for="frontendUrl">URL:</label>
-                <input type="text" id="frontendUrl" name="frontendUrl" required>
+                <input type="text" id="frontendUrl" name="frontendUrl" required placeholder="http://localhost:3000/">
             </div>
-            <button type="submit">등록</button>
+            <button type="submit" class="button-primary">등록</button>
         </form>
     </template>
 
@@ -140,7 +158,7 @@
         <div class="terminal-container">
             <div id="terminalOutput" class="terminal-output"></div>
             <div class="terminal-input-wrap">
-                <input type="text" id="terminalInput" placeholder="명령어를 입력하세요...">
+                <input type="text" id="terminalInput" placeholder="명령어를 입력하세요..." autocomplete="off">
             </div>
         </div>
     </template>
@@ -169,12 +187,27 @@
         </div>
     </template>
 
+    <!-- 진행 상태 모달 템플릿 -->
+    <template id="connectionProgressTemplate">
+        <div class="progress-modal">
+            <div class="progress-header">
+                <span class="progress-title">연결 중...</span>
+            </div>
+            <div class="progress-content">
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
+                <div class="progress-message">연결을 시도 중입니다...</div>
+            </div>
+        </div>
+    </template>
+
     <!-- Forward Proxy 모달 템플릿 -->
     <template id="forwardProxyModalTemplate">
         <div class="warning-modal">
             <div class="warning-header">
                 <span class="warning-icon">⚠️</span>
-                포워드 프록시 서버 실행
+                <span>포워드 프록시 서버 실행</span>
             </div>
             <div class="warning-message">
                 프록시 서버가 귀하의 컴퓨터에서 모든 네트워크 트래픽을 라우팅하려고 합니다.
@@ -191,6 +224,7 @@
         </div>
     </template>
 
-    <script src="script.js"></script>
+    <!-- JavaScript 파일 불러오기 -->
+    <script type="module" src="js/app.js"></script>
 </body>
 </html>

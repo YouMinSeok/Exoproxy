@@ -3600,3 +3600,280 @@
 2024-12-13T06:58:10.081Z [INFO]: 운영 모드가 forward으로 변경되었습니다.
 2024-12-13T06:58:24.654Z [INFO]: Received POST request for /set-mode
 2024-12-13T06:58:24.655Z [INFO]: 운영 모드가 reverse으로 변경되었습니다.
+2024-12-13T07:00:32.336Z [INFO]: Received GET request for /features
+2024-12-13T07:00:41.309Z [INFO]: Received GET request for /status
+2024-12-13T07:00:41.313Z [INFO]: Received GET request for /features
+2024-12-13T07:00:46.216Z [INFO]: Received GET request for /status
+2024-12-13T07:00:46.223Z [INFO]: Received GET request for /features
+2024-12-13T07:00:51.223Z [INFO]: Received GET request for /status
+2024-12-13T07:00:51.250Z [INFO]: Received GET request for /features
+2024-12-13T07:00:51.814Z [INFO]: Received GET request for /status
+2024-12-13T07:00:51.818Z [INFO]: Received GET request for /features
+2024-12-13T07:02:42.245Z [INFO]: Received GET request for /features
+2024-12-13T07:08:28.491Z [INFO]: Received GET request for /status
+2024-12-13T07:11:18.211Z [INFO]: Received GET request for /status
+2024-12-13T07:11:18.241Z [INFO]: Received GET request for /features
+2024-12-13T07:11:18.500Z [INFO]: Received GET request for /status
+2024-12-13T07:11:18.568Z [INFO]: Received GET request for /features
+2024-12-13T07:16:33.160Z [INFO]: Received POST request for /command
+2024-12-13T07:17:04.465Z [INFO]: Received POST request for /command
+2024-12-13T07:19:46.388Z [INFO]: Received GET request for /status
+2024-12-13T07:38:38.973Z [INFO]: Received GET request for /status
+2024-12-13T07:38:41.687Z [INFO]: Received GET request for /status
+2024-12-13T07:39:09.015Z [INFO]: Received GET request for /status
+2024-12-13T07:39:09.032Z [INFO]: Received GET request for /features
+2024-12-13T07:39:11.695Z [INFO]: Received GET request for /status
+2024-12-13T07:39:11.698Z [INFO]: Received GET request for /features
+2024-12-13T07:42:17.866Z [INFO]: Received GET request for /status
+2024-12-13T07:42:17.877Z [INFO]: Received GET request for /features
+2024-12-13T07:42:21.685Z [INFO]: Received GET request for /status
+2024-12-13T07:42:21.695Z [INFO]: Received GET request for /features
+2024-12-13T07:42:26.687Z [INFO]: Received GET request for /status
+2024-12-13T07:42:26.706Z [INFO]: Received GET request for /features
+2024-12-13T07:42:32.934Z [INFO]: Received GET request for /features
+2024-12-13T07:50:16.801Z [INFO]: Received GET request for /status
+2024-12-13T07:53:57.305Z [INFO]: Received GET request for /features
+2024-12-13T07:53:59.557Z [INFO]: Received GET request for /status
+2024-12-13T07:53:59.572Z [INFO]: Received GET request for /features
+2024-12-13T07:54:23.706Z [INFO]: Received GET request for /status
+2024-12-13T07:54:23.714Z [INFO]: Received GET request for /features
+2024-12-13T07:54:26.768Z [INFO]: Received GET request for /status
+2024-12-13T07:54:26.776Z [INFO]: Received GET request for /features
+2024-12-13T07:54:32.219Z [INFO]: Received GET request for /features
+2024-12-13T07:57:42.281Z [INFO]: Received GET request for /status
+2024-12-13T08:03:26.908Z [INFO]: Received POST request for /command
+2024-12-13T08:03:39.421Z [INFO]: Received POST request for /command
+2024-12-13T08:03:45.265Z [INFO]: Received POST request for /command
+2024-12-13T08:07:05.531Z [INFO]: Received GET request for /features
+2024-12-13T08:07:14.920Z [INFO]: Received POST request for /toggle-feature
+2024-12-13T08:07:14.921Z [INFO]: ipHide 기능이 활성화되었습니다.
+2024-12-13T08:07:17.412Z [INFO]: Received GET request for /features
+2024-12-13T08:07:18.449Z [INFO]: Received POST request for /toggle-feature
+2024-12-13T08:07:18.449Z [INFO]: ipHide 기능이 비활성화되었습니다.
+2024-12-13T08:07:21.986Z [INFO]: Received GET request for /features
+2024-12-13T08:08:47.185Z [INFO]: Received GET request for /status
+2024-12-13T09:27:17.737Z [INFO]: Received POST request for /set-mode
+2024-12-13T09:27:17.755Z [INFO]: 운영 모드가 forward으로 변경되었습니다.
+2024-12-13T09:27:27.832Z [INFO]: Received POST request for /set-mode
+2024-12-13T09:27:27.834Z [INFO]: 운영 모드가 reverse으로 변경되었습니다.
+2024-12-13T09:27:32.390Z [INFO]: Received GET request for /features
+2024-12-13T09:27:34.198Z [INFO]: Received POST request for /toggle-feature
+2024-12-13T09:27:34.198Z [INFO]: ipHide 기능이 활성화되었습니다.
+2024-12-13T09:28:29.387Z [INFO]: Received POST request for /register
+2024-12-13T09:28:29.390Z [INFO]: 프론트엔드 URL이 등록되었습니다: http://localhost:3000/
+2024-12-13T09:29:04.942Z [INFO]: Received GET request for /
+2024-12-13T09:29:04.944Z [INFO]: [REVERSE] 요청 -> http://localhost:3000/
+2024-12-13T09:29:05.202Z [INFO]: Received GET request for /favicon.ico
+2024-12-13T09:29:05.203Z [INFO]: [REVERSE] 요청 -> http://localhost:3000/
+2024-12-13T09:30:12.749Z [INFO]: Received GET request for /features
+2024-12-13T09:30:14.151Z [INFO]: Received POST request for /toggle-feature
+2024-12-13T09:30:14.152Z [INFO]: ipHide 기능이 비활성화되었습니다.
+2024-12-14T02:05:37.900Z [INFO]: Exo Proxy HTTPS server running on port 5000
+2024-12-14T02:06:25.152Z [INFO]: Received GET request for /status
+2024-12-14T02:14:19.866Z [INFO]: Received POST request for /set-mode
+2024-12-14T02:14:19.873Z [INFO]: 운영 모드가 forward으로 변경되었습니다.
+2024-12-14T02:14:38.165Z [INFO]: Received POST request for /set-mode
+2024-12-14T02:14:38.167Z [INFO]: 운영 모드가 reverse으로 변경되었습니다.
+2024-12-14T02:14:45.286Z [INFO]: Received GET request for /status
+2024-12-14T02:14:45.290Z [INFO]: Received GET request for /features
+2024-12-14T02:14:49.930Z [INFO]: Received GET request for /status
+2024-12-14T02:14:49.935Z [INFO]: Received GET request for /features
+2024-12-14T02:14:54.855Z [INFO]: Received GET request for /features
+2024-12-14T02:47:10.230Z [INFO]: Received GET request for /status
+2024-12-14T02:47:10.274Z [INFO]: Received GET request for /features
+2024-12-14T02:47:12.999Z [INFO]: Received GET request for /features
+2024-12-14T03:29:16.134Z [INFO]: Received GET request for /features
+2024-12-14T03:29:21.546Z [INFO]: Received POST request for /register
+2024-12-14T03:47:40.184Z [INFO]: Received POST request for /register
+2024-12-14T03:47:40.199Z [INFO]: 프론트엔드 URL이 등록되었습니다: http://localhost:3000
+2024-12-14T03:49:51.023Z [INFO]: Received GET request for /status
+2024-12-14T03:49:51.031Z [INFO]: Received GET request for /features
+2024-12-14T04:16:21.656Z [INFO]: Received GET request for /status
+2024-12-14T04:16:21.676Z [INFO]: Received GET request for /features
+2024-12-14T04:28:51.561Z [INFO]: Received GET request for /status
+2024-12-14T04:28:51.570Z [INFO]: Received GET request for /features
+2024-12-14T04:28:57.515Z [INFO]: Received GET request for /features
+2024-12-14T04:29:22.448Z [INFO]: Received GET request for /status
+2024-12-14T04:29:22.461Z [INFO]: Received GET request for /features
+2024-12-14T04:29:25.382Z [INFO]: Received GET request for /features
+2024-12-14T04:45:50.610Z [INFO]: Received GET request for /features
+2024-12-14T04:45:53.249Z [INFO]: Received GET request for /status
+2024-12-14T04:45:53.255Z [INFO]: Received GET request for /features
+2024-12-14T04:46:08.558Z [INFO]: Received GET request for /status
+2024-12-14T04:46:08.569Z [INFO]: Received GET request for /features
+2024-12-14T04:47:22.998Z [INFO]: Received GET request for /features
+2024-12-14T04:47:28.844Z [INFO]: Received POST request for /toggle-feature
+2024-12-14T04:47:28.849Z [INFO]: anonymity 기능이 활성화되었습니다.
+2024-12-14T04:47:29.568Z [INFO]: Received GET request for /features
+2024-12-14T04:47:30.756Z [INFO]: Received POST request for /toggle-feature
+2024-12-14T04:47:30.757Z [INFO]: anonymity 기능이 비활성화되었습니다.
+2024-12-14T04:47:31.649Z [INFO]: Received GET request for /features
+2024-12-14T04:47:40.580Z [INFO]: Received POST request for /toggle-feature
+2024-12-14T04:47:40.581Z [INFO]: ipHide 기능이 활성화되었습니다.
+2024-12-14T04:47:41.616Z [INFO]: Received GET request for /features
+2024-12-14T04:49:30.605Z [INFO]: Received GET request for /features
+2024-12-14T04:49:31.974Z [INFO]: Received POST request for /toggle-feature
+2024-12-14T04:49:31.975Z [INFO]: ipHide 기능이 비활성화되었습니다.
+2024-12-14T04:49:32.915Z [INFO]: Received GET request for /features
+2024-12-14T04:50:20.473Z [INFO]: Received GET request for /features
+2024-12-14T05:13:26.392Z [INFO]: Received POST request for /command
+2024-12-14T05:13:37.596Z [INFO]: Received POST request for /command
+2024-12-14T05:13:47.635Z [INFO]: Received POST request for /set-mode
+2024-12-14T05:13:47.640Z [INFO]: 운영 모드가 forward으로 변경되었습니다.
+2024-12-14T05:13:55.516Z [INFO]: Received POST request for /set-mode
+2024-12-14T05:13:55.519Z [INFO]: 운영 모드가 forward으로 변경되었습니다.
+2024-12-14T05:14:00.280Z [INFO]: Received POST request for /poweroff
+2024-12-14T05:16:50.248Z [INFO]: Received GET request for /features
+2024-12-14T05:16:51.172Z [INFO]: Received POST request for /toggle-feature
+2024-12-14T05:16:51.173Z [INFO]: ipHide 기능이 활성화되었습니다.
+2024-12-14T05:16:52.732Z [INFO]: Received POST request for /toggle-feature
+2024-12-14T05:16:52.743Z [INFO]: fileEncrypt 기능이 활성화되었습니다.
+2024-12-14T05:16:56.647Z [INFO]: Received POST request for /toggle-feature
+2024-12-14T05:16:56.648Z [INFO]: ipHide 기능이 비활성화되었습니다.
+2024-12-14T05:16:57.016Z [INFO]: Received POST request for /toggle-feature
+2024-12-14T05:16:57.017Z [INFO]: encrypt 기능이 비활성화되었습니다.
+2024-12-14T05:16:57.370Z [INFO]: Received POST request for /toggle-feature
+2024-12-14T05:16:57.370Z [INFO]: fileEncrypt 기능이 비활성화되었습니다.
+2024-12-14T05:17:00.353Z [INFO]: Received POST request for /toggle-feature
+2024-12-14T05:17:00.355Z [INFO]: ipHide 기능이 활성화되었습니다.
+2024-12-14T05:17:01.057Z [INFO]: Received POST request for /toggle-feature
+2024-12-14T05:17:01.058Z [INFO]: fileEncrypt 기능이 활성화되었습니다.
+2024-12-14T05:17:01.670Z [INFO]: Received POST request for /toggle-feature
+2024-12-14T05:17:01.681Z [INFO]: anonymity 기능이 활성화되었습니다.
+2024-12-14T05:17:02.002Z [INFO]: Received POST request for /toggle-feature
+2024-12-14T05:17:02.003Z [INFO]: dataEncrypt 기능이 활성화되었습니다.
+2024-12-14T05:17:02.349Z [INFO]: Received POST request for /toggle-feature
+2024-12-14T05:17:02.350Z [INFO]: randomDistribution 기능이 활성화되었습니다.
+2024-12-14T05:17:03.327Z [INFO]: Received POST request for /toggle-feature
+2024-12-14T05:17:03.328Z [INFO]: ipHide 기능이 비활성화되었습니다.
+2024-12-14T05:17:03.664Z [INFO]: Received POST request for /toggle-feature
+2024-12-14T05:17:03.665Z [INFO]: encrypt 기능이 비활성화되었습니다.
+2024-12-14T05:17:04.267Z [INFO]: Received POST request for /toggle-feature
+2024-12-14T05:17:04.268Z [INFO]: ipHide 기능이 활성화되었습니다.
+2024-12-14T05:17:10.082Z [INFO]: Received GET request for /features
+2024-12-14T05:17:15.813Z [INFO]: Received GET request for /status
+2024-12-14T05:17:15.823Z [INFO]: Received GET request for /features
+2024-12-14T05:17:24.723Z [INFO]: Received GET request for /features
+2024-12-14T06:58:16.748Z [INFO]: Received GET request for /features
+2024-12-14T06:58:18.324Z [INFO]: Received POST request for /toggle-feature
+2024-12-14T06:58:18.326Z [INFO]: anonymity 기능이 비활성화되었습니다.
+2024-12-14T06:58:18.770Z [INFO]: Received POST request for /toggle-feature
+2024-12-14T06:58:18.771Z [INFO]: dataEncrypt 기능이 비활성화되었습니다.
+2024-12-14T06:58:19.100Z [INFO]: Received POST request for /toggle-feature
+2024-12-14T06:58:19.100Z [INFO]: randomDistribution 기능이 비활성화되었습니다.
+2024-12-14T06:58:20.096Z [INFO]: Received POST request for /toggle-feature
+2024-12-14T06:58:20.097Z [INFO]: fileEncrypt 기능이 비활성화되었습니다.
+2024-12-14T06:58:21.003Z [INFO]: Received POST request for /toggle-feature
+2024-12-14T06:58:21.004Z [INFO]: ipHide 기능이 비활성화되었습니다.
+2024-12-14T07:06:09.999Z [INFO]: Received GET request for /status
+2024-12-14T07:06:10.011Z [INFO]: Received GET request for /features
+2024-12-14T07:06:18.338Z [INFO]: Received POST request for /set-mode
+2024-12-14T07:06:18.343Z [INFO]: 운영 모드가 forward으로 변경되었습니다.
+2024-12-14T07:06:34.559Z [INFO]: Received GET request for /features
+2024-12-14T07:07:17.647Z [INFO]: Received POST request for /set-mode
+2024-12-14T07:07:17.650Z [INFO]: 운영 모드가 forward으로 변경되었습니다.
+2024-12-14T07:07:18.973Z [INFO]: Received GET request for /status
+2024-12-14T07:07:18.983Z [INFO]: Received GET request for /features
+2024-12-14T07:07:34.511Z [INFO]: Received GET request for /features
+2024-12-14T11:24:50.805Z [INFO]: Exo Proxy HTTPS server running on port 5000
+2024-12-14T11:25:33.320Z [INFO]: Received POST request for /command
+2024-12-14T11:27:36.806Z [INFO]: Received POST request for /set-mode
+2024-12-14T11:27:36.814Z [INFO]: 운영 모드가 forward으로 변경되었습니다.
+2024-12-14T11:32:44.547Z [INFO]: Received GET request for /features
+2024-12-14T11:33:40.487Z [INFO]: Received GET request for /
+2024-12-14T11:33:40.488Z [INFO]: [FORWARD] 요청 -> http://localhost:5000/
+2024-12-14T11:34:12.693Z [INFO]: Exo Proxy HTTPS server running on port 5000
+2024-12-14T11:34:49.581Z [INFO]: Received POST request for /register
+2024-12-14T11:35:18.403Z [INFO]: Received POST request for /command
+2024-12-14T11:35:28.893Z [INFO]: Received POST request for /register
+2024-12-14T11:35:32.056Z [INFO]: Received GET request for /features
+2024-12-14T11:35:37.890Z [INFO]: Received GET request for /status
+2024-12-14T11:35:37.899Z [INFO]: Received GET request for /features
+2024-12-14T11:35:45.561Z [INFO]: Received POST request for /set-mode
+2024-12-14T11:35:45.563Z [INFO]: 운영 모드가 forward으로 변경되었습니다.
+2024-12-14T11:39:09.985Z [INFO]: Received GET request for /status
+2024-12-14T11:39:12.342Z [INFO]: Received POST request for /set-mode
+2024-12-14T11:39:12.345Z [INFO]: 운영 모드가 reverse으로 변경되었습니다.
+2024-12-14T11:39:17.313Z [INFO]: Received POST request for /set-mode
+2024-12-14T11:39:17.317Z [INFO]: 운영 모드가 forward으로 변경되었습니다.
+2024-12-14T11:39:39.760Z [INFO]: Received POST request for /set-mode
+2024-12-14T11:39:39.764Z [INFO]: 운영 모드가 reverse으로 변경되었습니다.
+2024-12-14T11:42:17.644Z [INFO]: Received GET request for /status
+2024-12-14T11:42:18.133Z [INFO]: Received GET request for /status
+2024-12-14T11:42:18.143Z [INFO]: Received GET request for /features
+2024-12-14T11:42:20.368Z [INFO]: Received GET request for /status
+2024-12-14T11:42:20.375Z [INFO]: Received GET request for /features
+2024-12-14T11:42:22.506Z [INFO]: Received GET request for /status
+2024-12-14T11:42:22.514Z [INFO]: Received GET request for /features
+2024-12-14T11:42:28.193Z [INFO]: Received POST request for /register
+2024-12-14T12:07:51.169Z [INFO]: Received GET request for /status
+2024-12-14T12:08:08.470Z [INFO]: Received POST request for /register
+2024-12-14T12:08:08.473Z [INFO]: 프론트엔드 URL이 등록되었습니다: http://localhost:3000/
+2024-12-14T12:08:10.921Z [INFO]: Received POST request for /register
+2024-12-14T12:08:10.924Z [INFO]: 프론트엔드 URL이 등록되었습니다: http://localhost:3000/
+2024-12-14T12:08:13.501Z [INFO]: Received POST request for /register
+2024-12-14T12:08:13.503Z [INFO]: 프론트엔드 URL이 등록되었습니다: http://localhost:3000/
+2024-12-14T12:10:23.342Z [INFO]: Received POST request for /register
+2024-12-14T12:10:38.333Z [INFO]: Received POST request for /register
+2024-12-14T12:10:38.335Z [INFO]: 프론트엔드 URL이 등록되었습니다: http://localhost:3000/
+2024-12-14T12:12:15.436Z [INFO]: Received POST request for /register
+2024-12-14T12:12:15.440Z [INFO]: 프론트엔드 URL이 등록되었습니다: http://localhost:3000/
+2024-12-14T12:32:14.893Z [INFO]: Exo Proxy HTTPS server running on port 5000
+2024-12-14T12:32:19.232Z [INFO]: Received GET request for /status
+2024-12-14T12:32:27.015Z [INFO]: Received GET request for /features
+2024-12-14T12:32:53.877Z [INFO]: Received GET request for /status
+2024-12-14T12:34:09.270Z [INFO]: Received GET request for /status
+2024-12-14T12:34:16.069Z [INFO]: Received POST request for /set-mode
+2024-12-14T12:34:16.074Z [INFO]: 운영 모드가 forward으로 변경되었습니다.
+2024-12-14T12:34:18.096Z [INFO]: Received POST request for /set-mode
+2024-12-14T12:34:18.099Z [INFO]: 운영 모드가 reverse으로 변경되었습니다.
+2024-12-14T12:36:15.199Z [INFO]: Received GET request for /status
+2024-12-14T12:36:16.650Z [INFO]: Received GET request for /status
+2024-12-14T12:36:16.656Z [INFO]: Received GET request for /features
+2024-12-14T12:38:36.457Z [INFO]: Received GET request for /status
+2024-12-14T12:38:53.809Z [INFO]: Received POST request for /register
+2024-12-14T12:38:53.812Z [INFO]: 프론트엔드 URL이 등록되었습니다: http://localhost:3000/
+2024-12-14T12:39:13.293Z [INFO]: Received GET request for /
+2024-12-14T12:39:13.294Z [INFO]: [REVERSE] 요청 -> http://localhost:3000/
+2024-12-14T12:39:13.474Z [INFO]: Received GET request for /favicon.ico
+2024-12-14T12:39:13.475Z [INFO]: [REVERSE] 요청 -> http://localhost:3000/
+2024-12-14T12:39:47.134Z [INFO]: Received POST request for /register
+2024-12-14T12:39:49.358Z [INFO]: Received POST request for /register
+2024-12-14T12:43:11.297Z [INFO]: Received GET request for /status
+2024-12-14T12:43:39.459Z [INFO]: Received POST request for /register
+2024-12-14T12:43:39.462Z [INFO]: 프론트엔드 URL이 등록되었습니다: http://localhost:3000/
+2024-12-14T12:43:55.888Z [INFO]: Received POST request for /register
+2024-12-14T12:43:55.895Z [INFO]: 프론트엔드 URL이 등록되었습니다: http://localhost:3000/
+2024-12-14T12:44:01.508Z [INFO]: Received GET request for /features
+2024-12-14T12:44:05.780Z [INFO]: Received POST request for /toggle-feature
+2024-12-14T12:44:05.781Z [INFO]: ipHide 기능이 활성화되었습니다.
+2024-12-14T12:44:06.423Z [INFO]: Received POST request for /toggle-feature
+2024-12-14T12:44:06.424Z [INFO]: ipHide 기능이 비활성화되었습니다.
+2024-12-14T12:44:07.373Z [INFO]: Received POST request for /toggle-feature
+2024-12-14T12:44:07.374Z [INFO]: ipHide 기능이 활성화되었습니다.
+2024-12-14T12:44:07.567Z [INFO]: Received POST request for /toggle-feature
+2024-12-14T12:44:07.567Z [INFO]: ipHide 기능이 비활성화되었습니다.
+2024-12-14T12:44:07.720Z [INFO]: Received POST request for /toggle-feature
+2024-12-14T12:44:07.721Z [INFO]: ipHide 기능이 활성화되었습니다.
+2024-12-14T12:44:07.872Z [INFO]: Received POST request for /toggle-feature
+2024-12-14T12:44:07.874Z [INFO]: ipHide 기능이 비활성화되었습니다.
+2024-12-14T12:44:08.031Z [INFO]: Received POST request for /toggle-feature
+2024-12-14T12:44:08.032Z [INFO]: ipHide 기능이 활성화되었습니다.
+2024-12-14T12:44:08.544Z [INFO]: Received POST request for /toggle-feature
+2024-12-14T12:44:08.546Z [INFO]: ipHide 기능이 비활성화되었습니다.
+2024-12-14T12:44:21.839Z [INFO]: Received POST request for /set-mode
+2024-12-14T12:44:21.842Z [INFO]: 운영 모드가 forward으로 변경되었습니다.
+2024-12-14T12:44:39.637Z [INFO]: Received POST request for /set-mode
+2024-12-14T12:44:39.639Z [INFO]: 운영 모드가 reverse으로 변경되었습니다.
+2024-12-14T12:44:47.408Z [INFO]: Received GET request for /status
+2024-12-14T12:44:47.414Z [INFO]: Received GET request for /features
+2024-12-14T12:46:38.493Z [INFO]: Received GET request for /status
+2024-12-14T12:46:38.502Z [INFO]: Received GET request for /features
+2024-12-14T12:46:40.749Z [INFO]: Received GET request for /features
+2024-12-14T12:59:36.834Z [INFO]: Received GET request for /status
+2024-12-14T12:59:43.726Z [INFO]: Received GET request for /status
+2024-12-14T12:59:43.733Z [INFO]: Received GET request for /features
+2024-12-14T12:59:49.346Z [INFO]: Received GET request for /features
+2024-12-14T13:00:16.527Z [INFO]: Received POST request for /command
+2024-12-14T13:00:29.833Z [INFO]: Received POST request for /command
+2024-12-14T13:00:29.842Z [INFO]: Received POST request for /poweroff

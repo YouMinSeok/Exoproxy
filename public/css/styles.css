@@ -1,0 +1,265 @@
+/* public/css/styles.css */
+
+/* 공통 변수 */
+:root {
+    --color-button-primary: #3498db;
+    --color-button-primary-hover: #2980b9;
+    --color-button-secondary: #95a5a6;
+    --color-button-secondary-hover: #7f8c8d;
+    --color-text-primary: #2c3e50;
+    --color-modal-bg: #ecf0f1;
+    --color-modal-header-bg: #bdc3c7;
+    --color-snapshot-border: #95a5a6;
+    --color-snapshot-bg: #ffffff;
+    --color-snapshot-description-bg: rgba(0, 0, 0, 0.6);
+    --color-snapshot-description-text: #ffffff;
+    --color-snapshot-close-bg: #e74c3c;
+    --color-snapshot-close-hover-bg: #c0392b;
+    --transition-duration: 0.3s;
+}
+
+/* 버튼 스타일 */
+.button-primary {
+    background: var(--color-button-primary);
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    font-size: 1em;
+    color: #ffffff;
+    cursor: pointer;
+    transition: background var(--transition-duration), transform var(--transition-duration);
+}
+
+.button-primary:hover {
+    background: var(--color-button-primary-hover);
+    transform: translateY(-2px);
+}
+
+.button-primary:focus {
+    outline: 2px solid #ffffff;
+}
+
+.button-secondary {
+    background: var(--color-button-secondary);
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    font-size: 1em;
+    color: var(--color-text-primary);
+    cursor: pointer;
+    transition: background var(--transition-duration), transform var(--transition-duration);
+}
+
+.button-secondary:hover {
+    background: var(--color-button-secondary-hover);
+    transform: translateY(-2px);
+}
+
+.button-secondary:focus {
+    outline: 2px solid var(--color-button-primary);
+}
+
+/* 폼 그룹 */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-bottom: 15px;
+}
+
+form label {
+    font-size: 0.95em;
+    color: var(--color-text-primary);
+}
+
+form input[type="url"],
+form input[type="password"],
+form input[type="text"] {
+    background: #ecf0f1;
+    border: 1px solid #bdc3c7;
+    border-radius: 4px;
+    padding: 10px;
+    color: #2c3e50;
+    font-size: 0.95em;
+    transition: border-color var(--transition-duration);
+}
+
+form input[type="url"]:focus,
+form input[type="password"]:focus,
+form input[type="text"]:focus {
+    border-color: var(--color-button-primary);
+    outline: none;
+}
+
+/* 스위치 스타일 */
+.features-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.switch {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+}
+
+.switch input[type="checkbox"] {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    position: absolute;
+}
+
+.slider {
+    position: relative;
+    width: 46px;
+    height: 24px;
+    background-color: #ccc;
+    border-radius: 9999px;
+    transition: background-color var(--transition-duration), box-shadow var(--transition-duration);
+    cursor: pointer;
+}
+
+.slider::before {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    left: 2px;
+    top: 2px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    transition: transform var(--transition-duration);
+}
+
+.switch input[type="checkbox"]:checked + .slider {
+    background-color: var(--color-button-primary);
+    box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.3);
+}
+
+.switch input[type="checkbox"]:checked + .slider::before {
+    transform: translateX(22px);
+}
+
+.feature-label {
+    font-size: 0.95em;
+    color: var(--color-text-primary);
+    user-select: none;
+}
+
+/* 상태 패널 스타일 */
+.status-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.status-item {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    background: #ecf0f1;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+.status-label {
+    font-size: 0.85em;
+    color: var(--color-text-primary);
+    font-weight: bold;
+}
+
+.status-value {
+    font-size: 0.9em;
+    color: var(--color-text-primary);
+    font-weight: bold;
+}
+
+/* 스냅샷 스타일 */
+.snapshot-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 20px;
+}
+
+.snapshot {
+    position: relative;
+    width: 150px;
+    border: 1px solid var(--color-snapshot-border);
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    background: var(--color-snapshot-bg);
+}
+
+.snapshot:hover {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.snapshot img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* 스냅샷 닫기 버튼 스타일 */
+.snapshot-close-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: var(--color-snapshot-close-bg);
+    border: none;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 1em;
+    line-height: 20px;
+    text-align: center;
+}
+
+.snapshot-close-btn:hover {
+    background: var(--color-snapshot-close-hover-bg);
+}
+
+/* 터미널 컨테이너 스타일 */
+.terminal-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background: #1e1e1e;
+    color: #ffffff;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+/* 터미널 출력 영역 */
+.terminal-output {
+    flex: 1;
+    padding: 10px;
+    overflow-y: auto;
+    background: #1e1e1e;
+    border-bottom: 1px solid #333333;
+}
+
+/* 터미널 입력 영역 */
+.terminal-input-wrap {
+    padding: 10px;
+    background: #2e2e2e;
+}
+
+.terminal-input-wrap input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    border: none;
+    border-radius: 4px;
+    background: #3e3e3e;
+    color: #ffffff;
+    font-size: 1em;
+}
+
+/* 기타 공통 스타일들... */

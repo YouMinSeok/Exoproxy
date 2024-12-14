@@ -1,3 +1,5 @@
+// index.js
+
 const express = require('express');
 const fs = require('fs');
 const path = require('path');
@@ -63,7 +65,7 @@ app.use((req, res, next) => {
 
 // 상태 API
 app.get('/status', (req, res) => {
-    res.json({ mode: config.mode });
+    res.json({ success: true, mode: config.mode });
 });
 
 // 기능 상태 조회 API
@@ -75,7 +77,7 @@ app.get('/features', (req, res) => {
 app.post('/set-mode', (req, res) => {
     const { mode } = req.body;
     if (mode !== 'forward' && mode !== 'reverse') {
-        return res.status(400).json({ message: '유효하지 않은 모드입니다.' });
+        return res.status(400).json({ success: false, message: '유효하지 않은 모드입니다.' });
     }
     config.mode = mode;
     if (mode === 'forward') {
@@ -85,7 +87,7 @@ app.post('/set-mode', (req, res) => {
     saveConfig();
     logger.info(`운영 모드가 ${mode}으로 변경되었습니다.`);
     notifyModeChange(mode);
-    res.json({ message: `운영 모드가 ${mode}으로 변경되었습니다.` });
+    res.json({ success: true, message: `운영 모드가 ${mode}으로 변경되었습니다.` });
 });
 
 // /enable-proxy (forward 모드 활성화)
@@ -95,7 +97,7 @@ app.post('/enable-proxy', (req, res) => {
     saveConfig();
     logger.info('프록시 서버가 포워드 모드로 설정되었습니다.');
     notifyModeChange('forward');
-    res.json({ message: '프록시 서버가 포워드 모드로 설정되었습니다.' });
+    res.json({ success: true, message: '프록시 서버가 포워드 모드로 설정되었습니다.' });
 });
 
 // 기능 토글 API
@@ -104,39 +106,40 @@ app.post('/toggle-feature', (req, res) => {
     if (features.hasOwnProperty(feature)) {
         features[feature] = enabled;
         logger.info(`${feature} 기능이 ${enabled ? '활성화' : '비활성화'}되었습니다.`);
-        return res.json({ message: `${feature} 기능이 ${enabled ? '활성화' : '비활성화'}되었습니다.` });
+        return res.json({ success: true, message: `${feature} 기능이 ${enabled ? '활성화' : '비활성화'}되었습니다.` });
     }
-    res.status(400).json({ message: '유효하지 않은 기능입니다.' });
+    res.status(400).json({ success: false, message: '유효하지 않은 기능입니다.' });
 });
 
 // 명령어 처리 API
 app.post('/command', (req, res) => {
     const { command } = req.body;
     if (!command) {
-        return res.status(400).json({ message: '명령어를 입력하세요.' });
+        return res.status(400).json({ success: false, message: '명령어를 입력하세요.' });
     }
 
     const trimmedCommand = command.trim();
 
     if (trimmedCommand === 'status') {
-        return res.json({ output: `프록시 서버 모드: ${config.mode === 'forward' ? '포워드 프록시 (ON)' : '리버스 프록시 (OFF)'}` });
+        return res.json({ success: true, output: `프록시 서버 모드: ${config.mode === 'forward' ? '포워드 프록시 (ON)' : '리버스 프록시 (OFF)'}` });
     }
 
     if (trimmedCommand === 'poweroff') {
-        return res.json({ output: '시스템 종료 중...' });
+        return res.json({ success: true, output: '시스템 종료 중...' });
     }
 
     if (trimmedCommand === 'api list') {
         if (config.frontend.length === 0) {
-            return res.json({ output: '등록된 프론트엔드 URL이 없습니다.' });
+            return res.json({ success: true, output: '등록된 프론트엔드 URL이 없습니다.' });
         } else {
-            return res.json({ output: `등록된 URL:\n${config.frontend.join('\n')}` });
+            return res.json({ success: true, output: `등록된 URL:\n${config.frontend.join('\n')}` });
         }
     }
 
     if (trimmedCommand === 'stat') {
         const urlCount = config.frontend.length;
         return res.json({ 
+            success: true, 
             output: `현재 모드: ${config.mode}\n등록된 프론트엔드 URL 개수: ${urlCount}` 
         });
     }
@@ -149,15 +152,15 @@ app.post('/command', (req, res) => {
             'stat: 현재 모드 및 URL 수 표시',
             'help: 명령어 목록 표시'
         ];
-        return res.json({ output: `사용 가능한 명령어:\n${commands.join('\n')}` });
+        return res.json({ success: true, output: `사용 가능한 명령어:\n${commands.join('\n')}` });
     }
 
-    return res.json({ output: `알 수 없는 명령어: ${command}` });
+    return res.json({ success: false, output: `알 수 없는 명령어: ${command}` });
 });
 
 // Poweroff API
 app.post('/poweroff', (req, res) => {
-    res.json({ message: '시스템 종료 중...' });
+    res.json({ success: true, message: '시스템 종료 중...' });
     // Electron IPC를 통해 앱 종료 로직 수행
 });
 
@@ -177,16 +180,16 @@ app.get('/proxy.pac', (req, res) => {
 // Reverse 모드 URL 등록 API
 app.post('/register', (req, res) => {
     if (config.mode !== 'reverse') {
-        return res.status(400).json({ message: '현재 모드에서는 프론트엔드 URL을 등록할 수 없습니다.' });
+        return res.status(400).json({ success: false, message: '현재 모드에서는 프론트엔드 URL을 등록할 수 없습니다.' });
     }
     const { frontendUrl } = req.body;
     if (!frontendUrl || !frontendUrl.startsWith('http')) {
-        return res.status(400).json({ message: '유효하지 않은 URL 형식입니다.' });
+        return res.status(400).json({ success: false, message: '유효하지 않은 URL 형식입니다.' });
     }
     config.frontend.push(frontendUrl);
     saveConfig();
     logger.info(`프론트엔드 URL이 등록되었습니다: ${frontendUrl}`);
-    res.json({ message: '프론트엔드 URL이 등록되었습니다!' });
+    res.json({ success: true, message: '프론트엔드 URL이 등록되었습니다!' });
 });
 
 // 요청 처리 로직
@@ -230,10 +233,10 @@ app.use((req, res) => {
 // 에러 핸들링
 app.use((err, req, res, next) => {
     logger.error(`Error: ${err.message}`);
-    res.status(500).json({ message: 'Internal Server Error' });
+    res.status(500).json({ success: false, message: 'Internal Server Error' });
 });
 
-// HTTPS 서버 시작 (https://localhost:5000 접속)
+// WebSocket 설정
 const WebSocket = require('ws');
 const httpsServer = https.createServer(sslOptions, app);
 const wss = new WebSocket.Server({ server: httpsServer });
@@ -267,7 +270,7 @@ app.all('/encrypted/:encryptedPath', (req, res, next) => {
         const { iv } = req.query;
 
         if (!features.encrypt) {
-            return res.status(400).json({ message: '경로 암호화 비활성화 상태입니다.' });
+            return res.status(400).json({ success: false, message: '경로 암호화 비활성화 상태입니다.' });
         }
 
         const decryptedPath = decrypt({ content: encryptedPath, iv: iv });
@@ -276,7 +279,7 @@ app.all('/encrypted/:encryptedPath', (req, res, next) => {
         next();
     } catch (error) {
         logger.error(`경로 복호화 실패: ${error.message}`);
-        res.status(400).json({ message: '경로 복호화 실패', error: error.message });
+        res.status(400).json({ success: false, message: '경로 복호화 실패', error: error.message });
     }
 });
 

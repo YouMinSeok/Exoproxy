@@ -1,0 +1,63 @@
+/* public/css/topbar.css */
+
+/* 상단 바 스타일 */
+.top-bar {
+    width: 300px;
+    height: 60px;
+    background: var(--color-topbar-bg);
+    color: var(--color-topbar-text);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 20px;
+    position: fixed;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: var(--color-topbar-border-radius);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    z-index: 1001;
+    border: 1px solid var(--color-topbar-border);
+    transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+    cursor: move;
+}
+
+.top-bar:hover {
+    background: rgba(44, 62, 80, 0.85);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+    transform: translateX(-50%) translateY(-2px);
+}
+
+.time-date-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.current-time {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.current-date {
+    font-size: 1.2em;
+    color: #bdc3c7;
+}
+
+/* 반응형 상단 바 */
+@media (max-width: 768px) {
+    .top-bar {
+        width: 90%;
+        height: 50px;
+    }
+
+    .current-time {
+        font-size: 1.2em;
+    }
+
+    .current-date {
+        font-size: 1em;
+    }
+}

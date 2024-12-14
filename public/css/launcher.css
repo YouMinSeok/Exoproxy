@@ -1,0 +1,121 @@
+/* public/css/launcher.css */
+
+/* 런처 스타일 */
+.launcher {
+    width: 80px;
+    background: var(--color-launcher-bg);
+    backdrop-filter: blur(var(--blur-value));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 80px;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    z-index: 1005;
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 0 10px 10px 0;
+    transition: width var(--transition-duration);
+}
+
+/* 런처 버튼 스타일 */
+.launcher-btn {
+    width: 60px;
+    height: 60px;
+    margin: 10px 0;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 50%;
+    color: var(--color-text-secondary);
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background var(--transition-duration), transform var(--transition-duration), box-shadow var(--transition-duration);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1006;
+}
+
+.launcher-btn:focus {
+    outline: 2px solid var(--color-button-primary);
+}
+
+/* PNG 아이콘 스타일링 */
+.launcher-icon {
+    width: 36px;
+    height: 36px;
+    transition: transform var(--transition-duration), filter var(--transition-duration);
+    filter: drop-shadow(0 0 2px rgba(0,0,0,0.5));
+}
+
+/* 호버 시 아이콘 스타일 변경 */
+.launcher-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.launcher-btn:hover .launcher-icon {
+    transform: rotate(10deg) scale(1.05);
+    filter: drop-shadow(0 0 4px rgba(0,0,0,0.7));
+}
+
+/* 툴팁 스타일 */
+.launcher-btn::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    left: 110%;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--color-tooltip-bg);
+    color: var(--color-tooltip-text);
+    padding: 5px 10px;
+    border-radius: 4px;
+    white-space: nowrap;
+    font-size: 0.8em;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--transition-duration);
+    z-index: 1001;
+}
+
+.launcher-btn::before {
+    content: '';
+    position: absolute;
+    left: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent var(--color-tooltip-bg) transparent transparent;
+    opacity: 0;
+    transition: opacity var(--transition-duration);
+    pointer-events: none;
+    z-index: 1001;
+}
+
+.launcher-btn:hover::after,
+.launcher-btn:hover::before {
+    opacity: 1;
+}
+
+/* 반응형 런처 */
+@media (max-width: 768px) {
+    .launcher {
+        width: 60px;
+        padding-top: 60px;
+    }
+
+    .launcher-btn {
+        width: 50px;
+        height: 50px;
+    }
+
+    .launcher-icon {
+        width: 24px;
+        height: 24px;
+    }
+}

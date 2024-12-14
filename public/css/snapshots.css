@@ -1,0 +1,173 @@
+/* public/css/snapshots.css */
+
+/* 활동 개요 오버레이 스타일 */
+.overview-overlay {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 900px;
+    height: 700px;
+    transform: translate(-50%, -50%) scale(0.8);
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+    display: none;
+    flex-direction: column;
+    z-index: 10000;
+    opacity: 0;
+    transition: transform var(--transition-duration) ease, opacity var(--transition-duration) ease;
+}
+
+.overview-overlay.open {
+    display: flex;
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+}
+
+.overview-overlay .overview-content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    overflow-y: auto;
+}
+
+/* Close 버튼 스타일 */
+.overview-overlay .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    color: var(--color-text-primary);
+    font-size: 1.5em;
+    cursor: pointer;
+    transition: color var(--transition-duration);
+}
+
+.overview-overlay .close-btn:hover {
+    color: #e74c3c;
+}
+
+/* 스냅샷 컨테이너 */
+.snapshot-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    width: 100%;
+    overflow-y: auto;
+    padding: 10px;
+}
+
+/* 개별 스냅샷 */
+.snapshot {
+    position: relative;
+    width: 100%;
+    padding-top: 75%; /* 4:3 비율 유지 */
+    border: 2px solid var(--color-snapshot-border);
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    transition: transform var(--transition-duration), box-shadow var(--transition-duration);
+    background: var(--color-snapshot-bg);
+}
+
+.snapshot:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 15px rgba(52, 152, 219, 0.7);
+}
+
+.snapshot img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.snapshot-description {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--color-snapshot-description-bg);
+    color: var(--color-snapshot-description-text);
+    padding: 5px;
+    font-size: 1em;
+    text-align: center;
+}
+
+.snapshot-close-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: var(--color-snapshot-close-bg);
+    border: none;
+    color: #fff;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    font-size: 1.2em;
+    line-height: 25px;
+    text-align: center;
+    padding: 0;
+    transition: background var(--transition-duration);
+}
+
+.snapshot-close-btn:hover {
+    background: var(--color-snapshot-close-hover-bg);
+}
+
+/* 반응형 스냅샷 */
+@media (max-width: 1200px) {
+    .overview-overlay {
+        width: 95%;
+        height: 80%;
+    }
+
+    .snapshot-container {
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        gap: 15px;
+    }
+
+    .snapshot {
+        padding-top: 70%; /* 비율 조정 */
+    }
+
+    .snapshot-description {
+        font-size: 0.9em;
+    }
+
+    .snapshot-close-btn {
+        width: 20px;
+        height: 20px;
+        font-size: 1em;
+    }
+}
+
+@media (max-width: 768px) {
+    .snapshot-container {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 10px;
+    }
+
+    .snapshot {
+        padding-top: 75%; /* 4:3 비율 유지 */
+    }
+
+    .snapshot-description {
+        display: none; /* 작은 화면에서는 설명 숨김 */
+    }
+
+    .snapshot-close-btn {
+        width: 20px;
+        height: 20px;
+        font-size: 1em;
+    }
+}
